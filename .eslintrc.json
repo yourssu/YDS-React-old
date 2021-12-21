@@ -1,13 +1,18 @@
 {
   "parser": "@typescript-eslint/parser",
   "env": {
+    "es6": true,
     "browser": true,
-    "es2021": true
+    "node": true
   },
   "extends": [
-    "plugin:react/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
     "plugin:react-hooks/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "airbnb-typescript",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "prettier"
   ],
   "parserOptions": {
     "ecmaFeatures": {
@@ -17,13 +22,29 @@
     "sourceType": "module"
   },
   "plugins": [
-    "react",
-    "@typescript-eslint",
-    "prettier"
+    "react-hooks",
+    "@typescript-eslint"
   ],
   "settings": {
     "react": {
       "version": "detect"
     }
-  }
+  },
+  "rules": {
+    "import/no-extraneous-dependencies": "off",
+    "react/jsx-filename-extension": "off"
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.ts",
+        "*.tsx"
+      ],
+      "parserOptions": {
+        "project": [
+          "tsconfig.eslint.json"
+        ]
+      }
+    }
+  ]
 }
