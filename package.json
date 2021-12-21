@@ -1,0 +1,100 @@
+{
+  "name": "@yourssu/react",
+  "version": "0.0.1",
+  "description": "YOURSSU Design System for React",
+  "contributors": [
+    "EATSTEAK <me@eatsteak.dev>",
+    "Lime"
+  ],
+  "keywords": [
+    "yourssu",
+    "design-system",
+    "ui",
+    "react"
+  ],
+  "repository": "yourssu/YDS-React",
+  "license": "MIT",
+  "main": "build/cjs/index.js",
+  "module": "build/esm/index.js",
+  "unpkg": "build/umd/yds-react.min.js",
+  "types": "build/types/index.d.ts",
+  "files": [
+    "build"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "types": "tsc --build tsconfig.types.json",
+    "build-commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir build/cjs --ignore '**/stories' --extensions '.ts','.tsx' --source-maps inline",
+    "build-esm": "cross-env BABEL_ENV=esm babel src --out-dir build/esm --ignore '**/stories' --extensions '.ts','.tsx' --source-maps inline",
+    "build-umd": "rollup -c",
+    "build": "concurrently --names \"types,commonjs,esm,umd\" \"yarn types\" \"yarn build-commonjs\" \"yarn build-esm\" \"yarn build-umd\"",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.5",
+    "@babel/plugin-proposal-class-properties": "^7.16.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.16.5",
+    "@babel/plugin-proposal-private-methods": "^7.16.5",
+    "@babel/plugin-transform-runtime": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "@babel/preset-react": "^7.16.5",
+    "@babel/preset-typescript": "^7.16.5",
+    "@emotion/babel-plugin": "^11.7.2",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.1.1",
+    "@rollup/plugin-replace": "^3.0.0",
+    "@rollup/plugin-typescript": "^8.3.0",
+    "@storybook/addon-actions": "^6.4.9",
+    "@storybook/addon-essentials": "^6.4.9",
+    "@storybook/addon-links": "^6.4.9",
+    "@storybook/react": "^6.4.9",
+    "@typescript-eslint/eslint-plugin": "^5.8.0",
+    "@typescript-eslint/parser": "^5.8.0",
+    "babel-loader": "^8.2.3",
+    "babel-plugin-add-react-displayname": "^0.0.5",
+    "concurrently": "^6.5.1",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.5.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.27.1",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-standard": "^5.0.0",
+    "eslint-plugin-storybook": "^0.5.5",
+    "prettier": "^2.5.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-is": "^17.0.2",
+    "rollup": "^2.61.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "typescript": "^4.5.4"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.16.5",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@types/react": "^17.0.37"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0",
+    "react-is": "^16.8.0 || ^17.0.0"
+  },
+  "prettier": {
+    "parser": "typescript",
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 120,
+    "tabWidth": 2,
+    "useTabs": false,
+    "trailingComma": "all",
+    "endOfLine": "lf",
+    "bracketSpacing": true
+  }
+}

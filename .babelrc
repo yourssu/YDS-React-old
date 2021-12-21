@@ -1,0 +1,36 @@
+{
+  "presets": [
+    "@babel/env",
+    "@babel/preset-react",
+    "@babel/preset-typescript"
+  ],
+  "plugins": [
+    "@emotion",
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-private-methods",
+    "@babel/plugin-proposal-object-rest-spread",
+    "babel-plugin-add-react-displayname"
+  ],
+  "env": {
+    "esm": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "modules": false
+          }
+        ]
+      ],
+      "plugins": [
+        "@emotion",
+        [
+          "@babel/plugin-transform-runtime",
+          {
+            "useESModules": true
+          }
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "lib": [
+      "dom",
+      "esnext"
+    ],
+    "declaration": true,
+    "declarationDir": "build/types",
+    "allowJs": false,
+    "checkJs": false,
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "strict": true,
+    "emitDeclarationOnly": true,
+    "isolatedModules": true,
+    "noFallthroughCasesInSwitch": true,
+    "suppressExcessPropertyErrors": true,
+    "noImplicitAny": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true,
+    "incremental": true,
+    "declarationMap": true
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "src/**/*.stories.tsx",
+    "src/**/*.test.tsx"
+  ]
+}
