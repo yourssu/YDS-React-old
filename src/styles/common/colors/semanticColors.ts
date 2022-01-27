@@ -35,7 +35,7 @@ const semanticColors: { [color in type.SemanticColrs]: string } = {
     buttonDisabledBG: basicColors.gray200,
     buttonPoint: basicColors.pointColor400,
     buttonPointPressed: basicColors.pointColor300,
-    buttonPointBG: basicColors.pointBlue050,
+    buttonPointBG: basicColors.pointColor050,
     buttonWarned: basicColors.warningRed400,
     buttonWarnedPressed: basicColors.warningRed300,
     buttonWarnedBG: basicColors.warningRed050,
@@ -53,9 +53,9 @@ const semanticColors: { [color in type.SemanticColrs]: string } = {
     shadowThin: basicColors.gray400,
     shadowNormal: basicColors.gray500,
 
-    monoItemBG: basicColors.gray700,
-    monoItemText: basicColors.gray100,
-    monoItemPrimary: basicColors.gray800,
+    monoItemPrimary: basicColors.gray700,
+    monoItemBG: basicColors.gray100,
+    monoItemText: basicColors.gray800,
 
     limeItemPrimary: basicColors.lime300,
     limeItemBG: basicColors.lime050,
@@ -66,9 +66,9 @@ const semanticColors: { [color in type.SemanticColrs]: string } = {
     greenItemBG: basicColors.green050,
     greenItemText: basicColors.green800,
 
-    EmeraldItemPrimary: basicColors.emerald300,
-    EmeraldItemBG: basicColors.emerald050,
-    EmeraldItemText: basicColors.emerald800,
+    emeraldItemPrimary: basicColors.emerald300,
+    emeraldItemBG: basicColors.emerald050,
+    emeraldItemText: basicColors.emerald800,
 
     aquaItemPrimary: basicColors.aqua300,
     aquaItemBG: basicColors.aqua050,

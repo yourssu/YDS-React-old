@@ -1,3 +1,3 @@
-export { Button } from './button/Button'
 export { BoxButton } from './BoxButton/BoxButton'
+export { PlainButton } from './PlainButton/PlainButton'
 

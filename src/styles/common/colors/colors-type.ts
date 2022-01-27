@@ -164,7 +164,7 @@ enum PalettesItems {
     monoItem = 'monoItem',
     limeItem = 'limeItem',
     greenItem = 'greenItem',
-    EmeraldItem = 'EmeraldItem',
+    emeraldItem = 'emeraldItem',
     aquaItem = 'aquaItem',
     blueItem = 'blueItem',
     indigoItem = 'indigoItem',

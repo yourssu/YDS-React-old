@@ -1,41 +1,45 @@
 import React from 'react'
-import { Story, ComponentMeta } from '@storybook/react'
-import PlayButton from '../assets/Playbutton'
-import { BoxButton, Props } from '../BoxButton/BoxButton'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { BoxButton } from '../BoxButton/BoxButton'
+import ChatIcon from '../assets/ChatIcon'
 
 export default {
   title: 'Atom/BoxButton',
   component: BoxButton,
-  argTypes: {
-    types: {
-      defaultValue: 'filled',
-    },
-    size: {
-      defaultValue: 'large',
-    },
-    rounding: {
-      defaultValue: 8,
-    },
-    isDisabled: {
-      defaultValue: false,
-    },
-    isWarned: {
-      defaultValue: false,
-    },
-  },
+  argTypes: {},
 } as ComponentMeta<typeof BoxButton>
 
-const Template: Story<Props> = (args) => <BoxButton {...args} />
+const Template: ComponentStory<typeof BoxButton> = (args) => <BoxButton {...args} />
 
 export const Primary = Template.bind({})
 Primary.args = {
-  primary: true,
-  title: '재생하기',
-  leftIcon: <PlayButton />,
-  label: 'BoxButton',
+  title: 'Enabled/Large/filled',
   size: 'large',
   types: 'filled',
-  rounding: 8,
+  rounding: '8',
   isDisabled: false,
   isWarned: false,
+  leftIcon: <ChatIcon />,
+}
+
+export const Disabled = Template.bind({})
+Disabled.args = {
+  title: 'Disabled/Large/tinted',
+  size: 'large',
+  types: 'tinted',
+  rounding: '8',
+  isDisabled: true,
+  isWarned: false,
+  leftIcon: <ChatIcon />,
+}
+
+export const Warned = Template.bind({})
+Warned.args = {
+  title: 'Warned/Large/line',
+  size: 'large',
+  types: 'line',
+  rounding: '8',
+  isDisabled: false,
+  isWarned: true,
+  leftIcon: <ChatIcon />,
 }

@@ -1,24 +1,25 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React from 'react'
-import styleTheme from '../styles/theme/index'
-
-type ButtonProps = {
-  size: 'extraLarge' | 'large' | 'medium' | 'small'
-  rounding: 8 | 4
-  isDisabled: boolean
-  isWarned: boolean
-
-  // error naming to "type"
-  types: 'filled' | 'tinted' | 'line'
-}
+import { getTypoStyle, Typography } from '../styles/common/typo/typo'
+import ThemeProvider from '../styles/theme/index'
 
 const Button = styled.button<ButtonProps>`
+  ${getTypoStyle(Typography.Button2)};
+
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 16px 0 16px;
   border-radius: ${({ rounding }) => rounding}px;
+  &:hover {
+    cursor: pointer;
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
 
   ${({ types, isDisabled, theme }) =>
     !isDisabled
@@ -26,9 +27,11 @@ const Button = styled.button<ButtonProps>`
         ? css`
             background-color: ${theme.color.buttonPoint};
             color: ${theme.color.buttonReserved};
+            fill: ${theme.color.buttonReserved};
             border: none;
-            svg {
-              background-color: ${theme.color.buttonReserved};
+
+            &:hover {
+              background-color: ${theme.color.buttonPointPressed};
             }
           `
         : types === 'tinted'
@@ -36,17 +39,22 @@ const Button = styled.button<ButtonProps>`
             background-color: ${theme.color.buttonPointBG};
             color: ${theme.color.buttonPoint};
             border: none;
-            svg {
-              background-color: ${theme.color.buttonPoint};
+            fill: ${theme.color.buttonPoint};
+            &:hover {
+              color: ${theme.color.buttonPointPressed};
+              fill: ${theme.color.buttonPointPressed};
             }
           `
         : // types === 'line'
           css`
             background-color: ${theme.color.bgNormal};
             color: ${theme.color.buttonPoint};
-            border: 1px solid ${theme.color.buttonPoint};
-            svg {
-              background-color: ${theme.color.buttonPoint};
+            border: 0.1px solid ${theme.color.buttonPoint};
+            fill: ${theme.color.buttonPoint};
+            &:hover {
+              border: 0.1px solid ${theme.color.buttonPointPressed};
+              color: ${theme.color.buttonPointPressed};
+              fill: ${theme.color.buttonPointPressed};
             }
           `
       : // isDisabled
@@ -55,9 +63,9 @@ const Button = styled.button<ButtonProps>`
           background-color: ${theme.color.buttonDisabledBG};
           color: ${theme.color.buttonDisabled};
           border: none;
-
-          svg {
-            background-color: ${theme.color.buttonDisabled};
+          fill: ${theme.color.buttonDisabled};
+          &:hover {
+            cursor: not-allowed;
           }
         `
       : types === 'tinted'
@@ -65,18 +73,19 @@ const Button = styled.button<ButtonProps>`
           background-color: ${theme.color.buttonDisabledBG};
           color: ${theme.color.buttonDisabled};
           border: none;
-
-          svg {
-            background-color: ${theme.color.buttonDisabled};
+          fill: ${theme.color.buttonDisabled};
+          &:hover {
+            cursor: not-allowed;
           }
         `
       : // types === 'line'
         css`
           background-color: ${theme.color.bgNormal};
-          border: 1px solid ${theme.color.buttonDisabled}
+          border: 0.1px solid ${theme.color.buttonDisabled}
           color: ${theme.color.buttonDisabled};
-          svg {
-            background-color: ${theme.color.buttonDisabled};
+          fill: ${theme.color.buttonDisabled};
+          &:hover {
+            cursor: not-allowed;
           }
         `};
 
@@ -87,9 +96,10 @@ const Button = styled.button<ButtonProps>`
             background-color: ${theme.color.buttonWarned};
             color: ${theme.color.buttonReserved};
             border: none;
-
-            svg {
-              background-color: ${theme.color.buttonReserved};
+            fill: ${theme.color.buttonReserved};
+            &:hover {
+              cursor: pointer;
+              background-color: ${theme.color.buttonWarnedPressed};
             }
           `
         : types === 'tinted'
@@ -97,21 +107,28 @@ const Button = styled.button<ButtonProps>`
             background-color: ${theme.color.buttonWarnedBG};
             color: ${theme.color.buttonWarned};
             border: none;
+            fill: ${theme.color.buttonWarned};
 
-            svg {
-              background-color: ${theme.color.buttonWarned};
+            &:hover {
+              cursor: pointer;
+              fill: ${theme.color.buttonWarnedPressed};
+              color: ${theme.color.buttonWarnedPressed};
             }
           `
         : // types === 'line'
           css`
             background-color: ${theme.color.bgNormal};
             color: ${theme.color.buttonWarned};
-            border: 1px solid ${theme.color.buttonWarned};
-            svg {
-              background-color: ${theme.color.buttonWarned};
+            border: 0.1px solid ${theme.color.buttonWarned};
+            fill: ${theme.color.buttonWarned};
+            &:hover {
+              cursor: pointer;
+              fill: ${theme.color.buttonWarnedPressed};
+              color: ${theme.color.buttonWarnedPressed};
+              border-color: ${theme.color.buttonWarnedPressed};
             }
           `
-      : ''};
+      : css``};
 
   ${({ size, types }) =>
     size === 'extraLarge'
@@ -141,24 +158,46 @@ const Button = styled.button<ButtonProps>`
       : css`
           height: 32px;
           font-size: 12px;
+          svg {
+            width: 16px;
+            height: 16px;
+          }
         `};
 `
 
+type ButtonProps = {
+  /** Button size */
+  size: 'extraLarge' | 'large' | 'medium' | 'small'
+
+  /** Button border radius */
+  rounding: 8 | 4
+
+  /** Disabled Button */
+  isDisabled: boolean
+
+  /** Button for Warnning */
+  isWarned: boolean
+
+  // error naming to "type"
+  types: 'filled' | 'tinted' | 'line'
+} & React.HtmlHTMLAttributes<HTMLButtonElement>
+
 export interface Props extends ButtonProps {
-  leftIcon: React.ReactNode
+  /** Button Icon */
+  leftIcon?: React.ReactNode
+
+  /** Button title */
   title: string
 }
 
-export const BoxButton: React.FC<Props & React.HtmlHTMLAttributes<HTMLButtonElement>> = ({
-  leftIcon,
-  title,
-  ...props
-}) => {
+export const BoxButton: React.FC<Props> = ({ leftIcon, title, ...props }) => {
   return (
-    <Button theme={styleTheme} {...props}>
-      <>{leftIcon}</>
-      <div className="padding--4" style={{ paddingLeft: '4px' }} />
-      <>{title}</>
-    </Button>
+    <ThemeProvider>
+      <Button disabled={props.isDisabled} {...props}>
+        <>{leftIcon}</>
+        <div className="padding--4" style={{ paddingLeft: '4px' }} />
+        <>{title}</>
+      </Button>
+    </ThemeProvider>
   )
 }
