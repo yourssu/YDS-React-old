@@ -1,3 +1,3 @@
-export { BoxButton } from './BoxButton/BoxButton'
-export { PlainButton } from './PlainButton/PlainButton'
+export { BoxButton } from './components/BoxButton/BoxButton'
+export { PlainButton } from './components/PlainButton/PlainButton'
 

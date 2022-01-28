@@ -1,8 +1,8 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React from 'react'
-import { getTypoStyle, Typography } from '../styles/common/typo/typo'
-import ThemeProvider from '../styles/theme/index'
+import { getTypoStyle, Typography } from '../../styles/common/typo/typo'
+import ThemeProvider from '../../styles/theme/index'
 
 const Button = styled.button<ButtonProps>`
   ${getTypoStyle(Typography.Button2)};

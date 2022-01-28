@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { BoxButton } from '../BoxButton/BoxButton'
+import { BoxButton } from '../components/BoxButton/BoxButton'
 import ChatIcon from '../assets/ChatIcon'
 
 export default {

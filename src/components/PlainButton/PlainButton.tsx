@@ -1,8 +1,8 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React from 'react'
-import { getTypoStyle, Typography } from '../styles/common/typo/typo'
-import ThemeProvider from '../styles/theme'
+import { getTypoStyle, Typography } from '../../styles/common/typo/typo'
+import ThemeProvider from '../../styles/theme'
 
 const Button = styled.button<ButtonProps>`
   ${getTypoStyle(Typography.Button3)};
@@ -13,9 +13,7 @@ const Button = styled.button<ButtonProps>`
   border: none;
   outline: none;
   background-color: transparent;
-  &:hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
 
   ${({ isPointed, isDisabled, isWarned, theme }) =>
     isPointed
@@ -29,8 +27,8 @@ const Button = styled.button<ButtonProps>`
         `
       : isDisabled
       ? css`
-          cursor: not-allowed;
           color: ${theme.color.buttonDisabled};
+          cursor: not-allowed;
           fill: ${theme.color.buttonDisabled};
         `
       : isWarned

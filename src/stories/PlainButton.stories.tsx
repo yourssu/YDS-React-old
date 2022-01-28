@@ -1,7 +1,7 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import ChatIcon from '../assets/ChatIcon'
-import { PlainButton } from '../PlainButton/PlainButton'
+import { PlainButton } from '../components/PlainButton/PlainButton'
 
 export default {
   title: 'Atom/PlainButton',
