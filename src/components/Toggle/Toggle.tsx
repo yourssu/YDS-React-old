@@ -99,7 +99,7 @@ const Toggle: React.VFC<ToogleProps> = ({ isDisabled, isSelected, ...props }) =>
   return (
     <ThemeProvider>
       <Label isDisabled={isDisabled} isSelected={isSelected}>
-        <input className="checkbox" {...props} type="checkbox" />
+        <input checked={true} className="checkbox" {...props} type="checkbox" />
         <span className="thumb"></span>
       </Label>
     </ThemeProvider>
