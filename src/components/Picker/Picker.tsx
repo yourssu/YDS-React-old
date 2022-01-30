@@ -101,9 +101,9 @@ type ToogleProps = {
 
   /** handle selected content (parameters => selectedContent) */
   onChange: (strings: string[]) => void
-} & React.HtmlHTMLAttributes<HTMLInputElement>
+} & React.HtmlHTMLAttributes<HTMLDivElement>
 
-const Picker: React.VFC<ToogleProps> = ({ columns, onChange }) => {
+const Picker: React.VFC<ToogleProps> = ({ columns, onChange, ...props }) => {
   const [topCotents, setTopCotents] = useState<ToogleProps['columns']>([[]])
   const [selectedCotentIndex, setSelectedCotentIndex] = useState<number[]>([])
   const [bottomCotents, setBottomCotents] = useState<ToogleProps['columns']>([[]])
@@ -196,7 +196,7 @@ const Picker: React.VFC<ToogleProps> = ({ columns, onChange }) => {
 
   return (
     <ThemeProvider>
-      <Content>
+      <Content {...props}>
         <div className="content-container">
           {columns.map((column, colIdx) => (
             <Wrapper
