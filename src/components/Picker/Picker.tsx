@@ -5,14 +5,19 @@ import ThemeProvider from '../../styles/theme'
 
 const Content = styled.div`
   display: flex;
-  width: fit-content;
-  z-index: 10;
-  height: 100%;
+  justify-content: center;
+  width: 375px;
+
+  .content-container {
+    width: 100%;
+    display: flex;
+    z-index: 10;
+    height: 100%;
+  }
 `
 
 const TopDim = styled.ul`
   display: flex;
-  flex-direction: column;
   align-items: center;
   position: relative;
   border-bottom: 1px solid ${({ theme }) => theme.color.borderNormal};
@@ -33,28 +38,34 @@ const TopDim = styled.ul`
   }
 `
 
-const Wrapper = styled.div<{ positionY: number }>`
+const Wrapper = styled.div`
   display: flex;
+  z-index: 20;
+  justify-content: center;
+  cursor: grab;
   width: 100%;
   flex-direction: column;
-  z-index: 20;
+
   height: 100%;
 
-  .container {
-    transform: ${({ positionY }) => `translateY(${positionY}px)`};
+  ul {
+    flex-direction: column;
+    li {
+      height: 23px;
+      ${getTypoStyle(Typography.Body1)};
+      color: ${({ theme }) => theme.color.textPrimary};
+      user-select: none;
+    }
   }
 
-  li {
-    width: 18px;
-    height: 23px;
-    ${getTypoStyle(Typography.Body1)};
-    color: ${({ theme }) => theme.color.textPrimary};
+  .null {
+    font-size: 0;
+    color: transparent;
   }
 `
 
 const Selected = styled.ul`
   display: flex;
-  flex-direction: column;
   align-items: center;
 
   li {
@@ -64,7 +75,6 @@ const Selected = styled.ul`
 
 const BottomDim = styled.ul`
   display: flex;
-  flex-direction: column;
   align-items: center;
 
   border-top: 1px solid ${({ theme }) => theme.color.borderNormal};
@@ -89,37 +99,16 @@ type ToogleProps = {
   /** Max Coulmn length 3 */
   columns: string[][]
 
-  /** handle selected content */
+  /** handle selected content (parameters => selectedContent) */
   onChange: (strings: string[]) => void
 } & React.HtmlHTMLAttributes<HTMLInputElement>
-//   callback: (selectedContent: string[]) => unknown
 
 const Picker: React.VFC<ToogleProps> = ({ columns, onChange }) => {
   const [topCotents, setTopCotents] = useState<ToogleProps['columns']>([[]])
   const [selectedCotentIndex, setSelectedCotentIndex] = useState<number[]>([])
   const [bottomCotents, setBottomCotents] = useState<ToogleProps['columns']>([[]])
-  const [translateY, setTranslateY] = useState<number[] | undefined>([])
+  const [isDrag, setIsDrag] = useState(false)
   const [pageY, setPageY] = useState(0)
-
-  const onSelect = useCallback(
-    (col: number, index: number) => {
-      setSelectedCotentIndex((prevs) => {
-        setTranslateY((prev) => {
-          const pickerWrapper = document.body.querySelector('.picker-wrapper')
-          if (pickerWrapper) {
-            const listHeight = pickerWrapper?.clientHeight / columns[col].length
-            if (prev && prev.length - 1 < col) {
-              prev?.push(listHeight * Math.floor(columns[col].length / 2) - listHeight * index)
-            }
-            return prev
-          }
-        })
-
-        return [...prevs.map((prev, idx) => (idx === col ? index : prev))]
-      })
-    },
-    [columns],
-  )
 
   useEffect(() => {
     columns.forEach((column) => {
@@ -133,35 +122,95 @@ const Picker: React.VFC<ToogleProps> = ({ columns, onChange }) => {
   useEffect(() => {
     setTopCotents(() => {
       return [
-        ...columns.map((col, colIndex) =>
-          col.map((content, contentIdx) => (contentIdx < selectedCotentIndex[colIndex] ? content : '')),
-        ),
+        ...columns.map((col, colIndex) => {
+          const newColumns = Array(3)
+            .fill(0)
+            .map((_, index) =>
+              col[selectedCotentIndex[colIndex] - (3 - index)]
+                ? col[selectedCotentIndex[colIndex] - (3 - index)]
+                : '__null__',
+            )
+          return newColumns
+        }),
       ]
     })
 
     setBottomCotents(() => {
       return [
-        ...columns.map((col, colIndex) =>
-          col.map((content, contentIdx) => (contentIdx > selectedCotentIndex[colIndex] ? content : '')),
-        ),
+        ...columns.map((col, colIndex) => {
+          const newColumns = Array(3)
+            .fill(0)
+            .map((_, index) =>
+              col[selectedCotentIndex[colIndex] + index + 1]
+                ? col[selectedCotentIndex[colIndex] + index + 1]
+                : '__null__',
+            )
+          return newColumns
+        }),
       ]
     })
 
     onChange(selectedCotentIndex.map((contentIndex, colIndex) => columns[colIndex][contentIndex]))
   }, [selectedCotentIndex, columns, onChange])
 
-  //
+  const onDragStart = useCallback((e: React.DragEvent<HTMLDivElement>) => {
+    setPageY(e.pageY)
+    setIsDrag(true)
+  }, [])
+
+  const onDrag = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>, colIndex: number) => {
+      if (!isDrag) return
+      const CLIENT_HEIGHT = e.currentTarget.clientHeight
+      const LENGTH = 7
+      const HEIGHT = Math.floor(CLIENT_HEIGHT / LENGTH)
+
+      if (pageY - e.pageY > HEIGHT) {
+        setSelectedCotentIndex((contentIndexes) => {
+          const newContentIndexes = contentIndexes.map((content, i) =>
+            i === colIndex ? (content + 1 >= columns[i].length ? columns[colIndex].length - 1 : content + 1) : content,
+          )
+          return newContentIndexes
+        })
+
+        setIsDrag(false)
+      }
+
+      if (e.pageY - pageY > HEIGHT) {
+        setSelectedCotentIndex((contentIndexes) => {
+          const newContentIndexes = contentIndexes.map((content, i) =>
+            i === colIndex ? (content - 1 < 0 ? 0 : content - 1) : content,
+          )
+          return newContentIndexes
+        })
+
+        setIsDrag(false)
+      }
+    },
+    [columns, isDrag, pageY],
+  )
+
+  const onDragEnd = useCallback(() => {
+    setIsDrag(false)
+  }, [])
+
   return (
     <ThemeProvider>
       <Content>
-        {columns.map((column, colIdx) => (
-          <Wrapper className="picker-wrapper" positionY={translateY[colIdx] || 0}>
-            <div className="container">
+        <div className="content-container">
+          {columns.map((column, colIdx) => (
+            <Wrapper
+              onMouseDown={onDragStart}
+              onMouseMove={(e) => onDrag(e, colIdx)}
+              onMouseUp={onDragEnd}
+              onDragEnd={onDragEnd}
+              className={`picker-wrapper-${colIdx}`}
+            >
               <TopDim>
                 {topCotents[colIdx]?.map(
-                  (content, contentIndex) =>
+                  (content) =>
                     content && (
-                      <li onClick={() => onSelect(colIdx, contentIndex)}>
+                      <li className={content === '__null__' ? 'null' : ''}>
                         <span>{content}</span>
                       </li>
                     ),
@@ -174,17 +223,17 @@ const Picker: React.VFC<ToogleProps> = ({ columns, onChange }) => {
               </Selected>
               <BottomDim>
                 {bottomCotents[colIdx]?.map(
-                  (content, contentIndex) =>
+                  (content) =>
                     content && (
-                      <li onClick={() => onSelect(colIdx, contentIndex)}>
+                      <li className={content === '__null__' ? 'null' : ''}>
                         <span>{content}</span>
                       </li>
                     ),
                 )}
               </BottomDim>
-            </div>
-          </Wrapper>
-        ))}
+            </Wrapper>
+          ))}
+        </div>
       </Content>
     </ThemeProvider>
   )
