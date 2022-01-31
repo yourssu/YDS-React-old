@@ -1,7 +1,9 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import React from 'react'
+import React, { useState } from 'react'
+import CheckIcon from '../../assets/CheckIcon'
 import ClearIcon from '../../assets/ClearIcon'
+import EyeoffIcon from '../../assets/EyeoffIcon'
 import SearchIcon from '../../assets/SearchIcon'
 import { getTypoStyle, Typography } from '../../styles/common/typo/typo'
 import ThemeProvider from '../../styles/theme'
@@ -50,13 +52,14 @@ const InputContainer = styled.div<TextFieldProps>`
     margin-right: 0px;
   }
 
-  .clear-icon {
+  .suffix-icon {
     display: none;
     margin-right: 16px;
+    fill: ${({ theme }) => theme.color.buttonNormal};
     cursor: pointer;
   }
 
-  input:focus + .clear-icon {
+  input:focus + .suffix-icon {
     display: flex;
   }
 
@@ -69,7 +72,7 @@ const InputContainer = styled.div<TextFieldProps>`
   ${({ isFocused }) =>
     isFocused &&
     css`
-      .clear-icon {
+      .suffix-icon {
         display: flex;
       }
     `}
@@ -172,7 +175,7 @@ const SimpleTextField: React.VFC<SimpleTextFieldProps> = ({ onClickClearButton, 
   return (
     <TextFiled
       suffix={
-        <div className="clear-icon" onClick={onClickClearButton}>
+        <div className="suffix-icon" onClick={onClickClearButton}>
           <ClearIcon />
         </div>
       }
@@ -199,10 +202,11 @@ const SearchTextField: React.VFC<SearchTextFieldProps> = ({ suffix, onClickClear
   return (
     <TextFiled
       suffix={
-        <div className="clear-icon" onClick={onClickClearButton}>
+        <div className="suffix-icon" onClick={onClickClearButton}>
           <ClearIcon />
         </div>
       }
+      type="email"
       helperLabel=""
       searchPrefix={
         <div className="search-icon">
@@ -214,4 +218,33 @@ const SearchTextField: React.VFC<SearchTextFieldProps> = ({ suffix, onClickClear
   )
 }
 
-export { SimpleTextField, SuffixTextField, SearchTextField }
+type PasswordTextFieldProps = {
+  suffix: string
+  /** not in figma, maybe need onClickClearButton? */
+  onClickClearButton?: () => void
+} & TextFieldProps
+
+/** eye icon for "show" ====> check-icon (temporary) */
+const PasswordTextField: React.VFC<PasswordTextFieldProps> = ({ suffix, onClickClearButton, ...props }) => {
+  const [isHide, setIsHide] = useState(true)
+
+  return (
+    <TextFiled
+      type={isHide ? 'password' : 'text'}
+      suffix={
+        <div
+          className="suffix-icon"
+          onClick={() => {
+            setIsHide((prev) => !prev)
+          }}
+        >
+          {isHide ? <EyeoffIcon /> : <CheckIcon />}
+        </div>
+      }
+      helperLabel=""
+      {...props}
+    />
+  )
+}
+
+export { SimpleTextField, SuffixTextField, SearchTextField, PasswordTextField }

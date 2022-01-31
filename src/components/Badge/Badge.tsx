@@ -1,6 +1,7 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React, { HtmlHTMLAttributes } from 'react'
+import ChatIcon from '../../assets/ChatIcon'
 import { getTypoStyle, Typography } from '../../styles/common/typo/typo'
 import ThemeProvider from '../../styles/theme'
 
@@ -70,11 +71,11 @@ interface Props extends BadgeProps {
   title: string
 }
 
-export const Badge: React.VFC<Props> = ({ leftIcon, title, ...props }) => {
+export const Badge: React.VFC<Props> = ({ leftIcon = <ChatIcon />, title, ...props }) => {
   return (
     <ThemeProvider>
       <Wrapper {...props}>
-        <>{leftIcon}</>
+        <>{props.icon && leftIcon && leftIcon}</>
         <div className="padding--4" style={{ paddingLeft: '4px' }} />
         <>{title}</>
         {(!leftIcon || !props.icon) && <div className="padding--4" style={{ paddingRight: '4px' }} />}

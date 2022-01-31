@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import Toggle from '../components/Toggle/Toggle'
 
@@ -8,7 +8,15 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof Toggle>
 
-const Template: ComponentStory<typeof Toggle> = (args) => <Toggle {...args} />
+const Template: ComponentStory<typeof Toggle> = (args) => {
+  const [isSelected, setIsSelected] = useState(args.isSelected)
+  const onClick = () => {
+    if (args.isDisabled) return
+    setIsSelected((prev) => !prev)
+  }
+  const newArgs = { ...args, isSelected, onClick }
+  return <Toggle {...newArgs} />
+}
 
 export const Primary = Template.bind({})
 Primary.args = {
