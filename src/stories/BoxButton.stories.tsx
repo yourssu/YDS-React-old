@@ -19,7 +19,6 @@ Primary.args = {
   rounding: '8',
   isDisabled: false,
   isWarned: false,
-  leftIcon: <ChatIcon />,
 }
 
 export const Disabled = Template.bind({})

@@ -18,7 +18,6 @@ Primary.args = {
   isPointed: false,
   isDisabled: false,
   isWarned: false,
-  leftIcon: <ChatIcon />,
 }
 
 export const Pointed = Template.bind({})

@@ -1,6 +1,7 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React from 'react'
+import ChatIcon from '../../assets/ChatIcon'
 import { getTypoStyle, Typography } from '../../styles/common/typo/typo'
 import ThemeProvider from '../../styles/theme/index'
 
@@ -190,7 +191,7 @@ export interface Props extends ButtonProps {
   title: string
 }
 
-export const BoxButton: React.FC<Props> = ({ leftIcon, title, ...props }) => {
+export const BoxButton: React.FC<Props> = ({ leftIcon = <ChatIcon />, title, ...props }) => {
   return (
     <ThemeProvider>
       <Button disabled={props.isDisabled} {...props}>
