@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { SearchTextField } from '../components/TextField/TextField'
+import { SearchTextField } from './TextField'
 
 export default {
   title: 'Atom/TextField/SearchTextField',
@@ -23,7 +23,7 @@ const Template: ComponentStory<typeof SearchTextField> = (args) => {
 export const Primary = Template.bind({})
 Primary.args = {
   placeholder: '플레이스 홀더',
-  isDisabled: false,
+  disabled: false,
   isPositive: true,
   isNegative: false,
 }

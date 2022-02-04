@@ -1,7 +1,7 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import ChatIcon from '../assets/ChatIcon'
-import { Badge } from '../components/Badge/Badge'
+import ChatIcon from '../../assets/ChatIcon'
+import { Badge } from './Badge'
 
 export default {
   title: 'Atom/Badge',

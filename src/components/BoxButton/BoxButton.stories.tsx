@@ -1,7 +1,7 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { BoxButton } from '../components/BoxButton/BoxButton'
-import ChatIcon from '../assets/ChatIcon'
+import { BoxButton } from './BoxButton'
+import ChatIcon from '../../assets/ChatIcon'
 
 export default {
   title: 'Atom/BoxButton',
@@ -17,7 +17,7 @@ Primary.args = {
   size: 'large',
   types: 'filled',
   rounding: '8',
-  isDisabled: false,
+  disabled: false,
   isWarned: false,
 }
 
@@ -27,7 +27,7 @@ Disabled.args = {
   size: 'large',
   types: 'tinted',
   rounding: '8',
-  isDisabled: true,
+  disabled: true,
   isWarned: false,
   leftIcon: <ChatIcon />,
 }
@@ -38,7 +38,7 @@ Warned.args = {
   size: 'large',
   types: 'line',
   rounding: '8',
-  isDisabled: false,
+  disabled: false,
   isWarned: true,
   leftIcon: <ChatIcon />,
 }

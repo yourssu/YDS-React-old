@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { SimpleTextField } from '../components/TextField/TextField'
+import { SimpleTextField } from './TextField'
 
 export default {
   title: 'Atom/TextField/SimpleTextField',
@@ -24,7 +24,7 @@ export const Primary = Template.bind({})
 Primary.args = {
   placeholder: '플레이스 홀더',
   helperLabel: '도움말 텍스트',
-  isDisabled: false,
+  disabled: false,
   isPositive: true,
   isNegative: false,
 }

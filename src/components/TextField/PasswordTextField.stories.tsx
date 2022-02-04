@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { PasswordTextField } from '../components/TextField/TextField'
+import { PasswordTextField } from './TextField'
 
 export default {
   title: 'Atom/TextField/PasswordTextField',
@@ -20,7 +20,7 @@ const Template: ComponentStory<typeof PasswordTextField> = (args) => {
 export const Primary = Template.bind({})
 Primary.args = {
   placeholder: '플레이스 홀더',
-  isDisabled: false,
+  disabled: false,
   isPositive: true,
   isNegative: false,
 }
