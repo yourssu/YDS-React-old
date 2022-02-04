@@ -3,7 +3,6 @@ import styled from '@emotion/styled'
 import React from 'react'
 import ChatIcon from '../../assets/ChatIcon'
 import { getTypoStyle, Typography } from '../../styles/common/typo/typo'
-import ThemeProvider from '../../styles/theme/index'
 
 const Button = styled.button<ButtonProps>`
   ${getTypoStyle(Typography.Button2)};
@@ -193,12 +192,10 @@ export interface Props extends ButtonProps {
 
 export const BoxButton: React.FC<Props> = ({ leftIcon = <ChatIcon />, title, ...props }) => {
   return (
-    <ThemeProvider>
-      <Button disabled={props.isDisabled} {...props}>
-        <>{leftIcon}</>
-        <div className="padding--4" style={{ paddingLeft: '4px' }} />
-        <>{title}</>
-      </Button>
-    </ThemeProvider>
+    <Button disabled={props.isDisabled} {...props}>
+      <>{leftIcon}</>
+      <div className="padding--4" style={{ paddingLeft: '4px' }} />
+      <>{title}</>
+    </Button>
   )
 }

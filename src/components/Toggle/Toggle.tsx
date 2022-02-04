@@ -1,7 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React from 'react'
-import ThemeProvider from '../../styles/theme'
 
 const Label = styled.label<ToogleProps>`
   position: relative;
@@ -97,12 +96,10 @@ type ToogleProps = {
 
 const Toggle: React.VFC<ToogleProps> = ({ isDisabled, isSelected, ...props }) => {
   return (
-    <ThemeProvider>
-      <Label isDisabled={isDisabled} isSelected={isSelected}>
-        <input checked={true} className="checkbox" {...props} type="checkbox" />
-        <span className="thumb"></span>
-      </Label>
-    </ThemeProvider>
+    <Label isDisabled={isDisabled} isSelected={isSelected}>
+      <input checked={true} className="checkbox" {...props} type="checkbox" />
+      <span className="thumb"></span>
+    </Label>
   )
 }
 

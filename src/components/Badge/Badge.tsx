@@ -3,7 +3,6 @@ import styled from '@emotion/styled'
 import React, { HtmlHTMLAttributes } from 'react'
 import ChatIcon from '../../assets/ChatIcon'
 import { getTypoStyle, Typography } from '../../styles/common/typo/typo'
-import ThemeProvider from '../../styles/theme'
 
 const Wrapper = styled.div<BadgeProps>`
   display: flex;
@@ -73,13 +72,11 @@ interface Props extends BadgeProps {
 
 export const Badge: React.VFC<Props> = ({ leftIcon = <ChatIcon />, title, ...props }) => {
   return (
-    <ThemeProvider>
-      <Wrapper {...props}>
-        <>{props.icon && leftIcon && leftIcon}</>
-        <div className="padding--4" style={{ paddingLeft: '4px' }} />
-        <>{title}</>
-        {(!leftIcon || !props.icon) && <div className="padding--4" style={{ paddingRight: '4px' }} />}
-      </Wrapper>
-    </ThemeProvider>
+    <Wrapper {...props}>
+      <>{props.icon && leftIcon && leftIcon}</>
+      <div className="padding--4" style={{ paddingLeft: '4px' }} />
+      <>{title}</>
+      {(!leftIcon || !props.icon) && <div className="padding--4" style={{ paddingRight: '4px' }} />}
+    </Wrapper>
   )
 }

@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
 import React from 'react'
 import { getTypoStyle, Typography } from '../../styles/common/typo/typo'
-import ThemeProvider from '../../styles/theme'
 
 const ToastWrapper = styled.div`
   display: flex;
@@ -48,17 +47,15 @@ type ToastMessageProps = {
 /* children: message of ToastMessage */
 const ToastMessage: React.FC<ToastMessageProps> = ({ line, children }) => {
   return (
-    <ThemeProvider>
-      <ToastWrapper>
-        <div className="toast-container">
-          <div className="padding--8" />
-          <div className="message-container">
-            <MessageWrapper line={line}>{children}</MessageWrapper>
-          </div>
-          <div className="padding--8" />
+    <ToastWrapper>
+      <div className="toast-container">
+        <div className="padding--8" />
+        <div className="message-container">
+          <MessageWrapper line={line}>{children}</MessageWrapper>
         </div>
-      </ToastWrapper>
-    </ThemeProvider>
+        <div className="padding--8" />
+      </div>
+    </ToastWrapper>
   )
 }
 
