@@ -1,6 +1,6 @@
-import { Global, ThemeProvider } from '@emotion/react'
+import { Global } from '@emotion/react'
 import { addDecorator } from '@storybook/react'
-import { GlobalStyles, theme } from '../src/styles/theme'
+import { DarkTheme, GlobalStyles, LightTheme, YDSProvider } from '../src/styles/theme'
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -12,9 +12,12 @@ export const parameters = {
   },
 }
 
+/** 임시 */
+const isDarkMode = false
+
 addDecorator((story) => (
-  <ThemeProvider theme={theme}>
+  <YDSProvider theme={!isDarkMode ? DarkTheme : LightTheme}>
     <Global styles={GlobalStyles} />
     {story()}
-  </ThemeProvider>
+  </YDSProvider>
 ))

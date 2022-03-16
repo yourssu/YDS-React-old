@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import Toggle from './Toggle'
+import { Toggle } from './Toggle'
 
 export default {
   title: 'Atom/Toggle',

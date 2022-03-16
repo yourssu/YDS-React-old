@@ -1,8 +1,17 @@
-import { css } from '@emotion/react'
-import { lightThemeColors } from '../foundation/colors/semanticColors'
+import React from 'react'
+import { css, Theme, ThemeProvider } from '@emotion/react'
+import { darkThemeColors, lightThemeColors } from '../foundation/colors/semanticColors'
 
-export const theme = {
+export const LightTheme = {
   color: lightThemeColors,
+}
+
+export const DarkTheme = {
+  color: darkThemeColors,
+}
+
+export const YDSProvider: React.FC<{ theme: Theme }> = ({ theme, children }) => {
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>
 }
 
 export const GlobalStyles = css`
