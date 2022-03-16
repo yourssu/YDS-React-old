@@ -15,4 +15,4 @@ const Checkbox: React.VFC<CheckBoxProps> = ({ text, disabled, isSelected, size, 
   )
 }
 
-export default Checkbox
+export { Checkbox }

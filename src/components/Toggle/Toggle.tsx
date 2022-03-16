@@ -11,4 +11,4 @@ const Toggle: React.VFC<ToggleProps> = ({ disabled, isSelected, ...props }) => {
   )
 }
 
-export default Toggle
+export { Toggle }

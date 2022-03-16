@@ -17,4 +17,4 @@ const ToastMessage: React.FC<ToastMessageProps> = ({ line, children }) => {
   )
 }
 
-export default ToastMessage
+export { ToastMessage }

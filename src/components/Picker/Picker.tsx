@@ -137,4 +137,4 @@ const Picker: React.VFC<PickerProps> = ({ columns, onChange, ...props }) => {
   )
 }
 
-export default Picker
+export { Picker }
