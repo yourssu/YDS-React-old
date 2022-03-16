@@ -155,12 +155,17 @@ enum PalettesItems {
     pinkItem = 'pinkItem'
 }
 
+enum PalettesToolTip {
+    tooltipBG = 'tooltipBG',
+    tooltipPoint = 'tooltipPoint',
+}
+
 type PalettesItemsType =
     `${PalettesItems}Primary` |
     `${PalettesItems}BG` |
     `${PalettesItems}Text`
 
-export type SemanticColrs =
+export type LightSemanticColrs =
     `${PalettesBackground}` |
     `${PalettesText}` |
     `${PalettesDim}` |
@@ -171,5 +176,18 @@ export type SemanticColrs =
     `${PalettesToast}` |
     `${PalettesPressed}` |
     `${PalettesShadow}` |
+    `${PalettesToolTip}` |
     PalettesItemsType
 
+export type DarkSemanticColors =
+    `${PalettesBackground}` |
+    `${PalettesText}` |
+    `${PalettesDim}` |
+    `${PalettesBorder}` |
+    `${PalettesButton}` |
+    `${PalettesButtonBar}` |
+    `${PalettesInputField}` |
+    `${PalettesToast}` |
+    `${PalettesPressed}` |
+    `${PalettesToolTip}` |
+    PalettesItemsType
