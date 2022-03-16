@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import Checkbox from '../components/Checkbox/Checkbox'
+import Checkbox from './Checkbox'
 
 export default {
   title: 'Atom/CheckBox',
@@ -13,7 +13,7 @@ const Template: ComponentStory<typeof Checkbox> = (args) => <Checkbox {...args} 
 export const Primary = Template.bind({})
 Primary.args = {
   text: '텍스트',
-  isDisabled: false,
+  disabled: false,
   size: 'medium',
   isSelected: true,
 }
@@ -21,7 +21,7 @@ Primary.args = {
 export const Disabled = Template.bind({})
 Disabled.args = {
   text: '텍스트',
-  isDisabled: true,
+  disabled: true,
   size: 'medium',
   isSelected: false,
 }
@@ -29,7 +29,7 @@ Disabled.args = {
 export const DisabledSelected = Template.bind({})
 DisabledSelected.args = {
   text: 'Disabled & Selected',
-  isDisabled: true,
+  disabled: true,
   size: 'medium',
   isSelected: true,
 }
@@ -37,7 +37,7 @@ DisabledSelected.args = {
 export const Small = Template.bind({})
 Small.args = {
   text: '텍스트',
-  isDisabled: false,
+  disabled: false,
   size: 'small',
   isSelected: true,
 }
@@ -45,7 +45,7 @@ Small.args = {
 export const Large = Template.bind({})
 Large.args = {
   text: '텍스트',
-  isDisabled: false,
+  disabled: false,
   size: 'Large',
   isSelected: true,
 }

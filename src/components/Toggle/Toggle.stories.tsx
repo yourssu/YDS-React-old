@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import Toggle from '../components/Toggle/Toggle'
+import Toggle from './Toggle'
 
 export default {
   title: 'Atom/Toggle',
@@ -11,7 +11,7 @@ export default {
 const Template: ComponentStory<typeof Toggle> = (args) => {
   const [isSelected, setIsSelected] = useState(args.isSelected)
   const onClick = () => {
-    if (args.isDisabled) return
+    if (args.disabled) return
     setIsSelected((prev) => !prev)
   }
   const newArgs = { ...args, isSelected, onClick }
@@ -20,12 +20,12 @@ const Template: ComponentStory<typeof Toggle> = (args) => {
 
 export const Primary = Template.bind({})
 Primary.args = {
-  isDisabled: false,
+  disabled: false,
   isSelected: true,
 }
 
 export const Disabled = Template.bind({})
 Disabled.args = {
-  isDisabled: true,
+  disabled: true,
   isSelected: false,
 }

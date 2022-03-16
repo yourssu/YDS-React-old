@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import Picker from '../components/Picker/Picker'
+import Picker from './Picker'
 
 export default {
   title: 'Atom/Picker',

@@ -1,7 +1,7 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import ChatIcon from '../assets/ChatIcon'
-import { PlainButton } from '../components/PlainButton/PlainButton'
+import ChatIcon from '../../assets/ChatIcon'
+import { PlainButton } from './PlainButton'
 
 export default {
   title: 'Atom/PlainButton',
@@ -16,7 +16,7 @@ Primary.args = {
   title: 'Enabled/Large/Normal',
   size: 'large',
   isPointed: false,
-  isDisabled: false,
+  disabled: false,
   isWarned: false,
 }
 
@@ -25,7 +25,7 @@ Pointed.args = {
   title: 'Enabled/Large/Pointed',
   size: 'large',
   isPointed: true,
-  isDisabled: false,
+  disabled: false,
   isWarned: false,
   leftIcon: <ChatIcon />,
 }
@@ -35,7 +35,7 @@ Disabled.args = {
   title: 'Disabled/Large/Normal',
   size: 'large',
   isPointed: false,
-  isDisabled: true,
+  disabled: true,
   isWarned: false,
   leftIcon: <ChatIcon />,
 }
@@ -45,7 +45,7 @@ Warned.args = {
   title: 'Warned/Large/Normal',
   size: 'large',
   isPointed: false,
-  isDisabled: false,
+  disabled: false,
   isWarned: true,
   leftIcon: <ChatIcon />,
 }
@@ -55,7 +55,7 @@ Medium.args = {
   title: 'Enabled/Medium/Pointed',
   size: 'medium',
   isPointed: true,
-  isDisabled: false,
+  disabled: false,
   isWarned: false,
   leftIcon: <ChatIcon />,
 }
@@ -65,7 +65,7 @@ Small.args = {
   title: 'Enabled/Small/Pointed',
   size: 'small',
   isPointed: true,
-  isDisabled: false,
+  disabled: false,
   isWarned: false,
   leftIcon: <ChatIcon />,
 }

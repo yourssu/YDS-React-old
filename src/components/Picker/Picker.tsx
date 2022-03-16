@@ -1,111 +1,11 @@
-import styled from '@emotion/styled'
 import React, { useCallback, useEffect, useState } from 'react'
-import { getTypoStyle, Typography } from '../../styles/common/typo/typo'
+import { PickerProps } from '../../types'
+import { BottomDim, Content, Selected, TopDim, Wrapper } from './Picker.styles'
 
-const Content = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 375px;
-
-  .content-container {
-    width: 100%;
-    display: flex;
-    z-index: 10;
-    height: 100%;
-  }
-`
-
-const TopDim = styled.ul`
-  display: flex;
-  align-items: center;
-  position: relative;
-  border-bottom: 1px solid ${({ theme }) => theme.color.borderNormal};
-
-  li {
-    position: relative;
-    margin: 4px 20px;
-
-    &::after {
-      content: '';
-      left: 0;
-      top: 0;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-color: ${({ theme }) => theme.color.dimThickReserved};
-    }
-  }
-`
-
-const Wrapper = styled.div`
-  display: flex;
-  z-index: 20;
-  justify-content: center;
-  cursor: grab;
-  width: 100%;
-  flex-direction: column;
-
-  height: 100%;
-
-  ul {
-    flex-direction: column;
-    li {
-      height: 23px;
-      ${getTypoStyle(Typography.Body1)};
-      color: ${({ theme }) => theme.color.textPrimary};
-      user-select: none;
-    }
-  }
-
-  .null {
-    font-size: 0;
-    color: transparent;
-  }
-`
-
-const Selected = styled.ul`
-  display: flex;
-  align-items: center;
-
-  li {
-    margin: 4px 20px;
-  }
-`
-
-const BottomDim = styled.ul`
-  display: flex;
-  align-items: center;
-
-  border-top: 1px solid ${({ theme }) => theme.color.borderNormal};
-
-  li {
-    position: relative;
-    margin: 4px 20px;
-
-    &::before {
-      content: '';
-      left: 0;
-      top: 0;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-color: ${({ theme }) => theme.color.dimThickReserved};
-    }
-  }
-`
-
-type ToogleProps = {
-  /** Max Coulmn length 3 */
-  columns: string[][]
-
-  /** handle selected content (parameters => selectedContent) */
-  onChange: (strings: string[]) => void
-} & React.HtmlHTMLAttributes<HTMLDivElement>
-
-const Picker: React.VFC<ToogleProps> = ({ columns, onChange, ...props }) => {
-  const [topCotents, setTopCotents] = useState<ToogleProps['columns']>([[]])
+const Picker: React.VFC<PickerProps> = ({ columns, onChange, ...props }) => {
+  const [topCotents, setTopCotents] = useState<PickerProps['columns']>([[]])
   const [selectedCotentIndex, setSelectedCotentIndex] = useState<number[]>([])
-  const [bottomCotents, setBottomCotents] = useState<ToogleProps['columns']>([[]])
+  const [bottomCotents, setBottomCotents] = useState<PickerProps['columns']>([[]])
   const [isDrag, setIsDrag] = useState(false)
   const [pageY, setPageY] = useState(0)
 
@@ -198,6 +98,7 @@ const Picker: React.VFC<ToogleProps> = ({ columns, onChange, ...props }) => {
       <div className="content-container">
         {columns.map((column, colIdx) => (
           <Wrapper
+            key={`picker-wrapper-${colIdx}--key`}
             onMouseDown={onDragStart}
             onMouseMove={(e) => onDrag(e, colIdx)}
             onMouseUp={onDragEnd}
@@ -206,9 +107,9 @@ const Picker: React.VFC<ToogleProps> = ({ columns, onChange, ...props }) => {
           >
             <TopDim>
               {topCotents[colIdx]?.map(
-                (content) =>
+                (content, i) =>
                   content && (
-                    <li className={content === '__null__' ? 'null' : ''}>
+                    <li key={content + `${colIdx}--top-key-${i}`} className={content === '__null__' ? 'null' : ''}>
                       <span>{content}</span>
                     </li>
                   ),
@@ -221,9 +122,9 @@ const Picker: React.VFC<ToogleProps> = ({ columns, onChange, ...props }) => {
             </Selected>
             <BottomDim>
               {bottomCotents[colIdx]?.map(
-                (content) =>
+                (content, i) =>
                   content && (
-                    <li className={content === '__null__' ? 'null' : ''}>
+                    <li key={content + `${colIdx}--bottom-key-${i}`} className={content === '__null__' ? 'null' : ''}>
                       <span>{content}</span>
                     </li>
                   ),

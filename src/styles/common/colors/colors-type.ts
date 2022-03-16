@@ -2,29 +2,11 @@
  *  Basic Colors
  */
 
-enum LogoColors {
-    logoBlue = "logoBlue",
-    logoYellow = "logoYellow"
-}
 enum SystemColor {
     pointBlue = "pointBlue",
     pointColor = "pointColor",
     warningRed = "warningRed",
     gray = "gray"
-}
-
-enum WhiteAndBlack {
-    white000 = 'white000',
-    black000 = 'black000',
-    realBlack = 'realBlack'
-}
-enum WhiteAndBlackAlpha {
-    white000A10 = 'white000A10',
-    white000A30 = 'white000A30',
-    white000A70 = 'white000A70',
-    black000A10 = 'black000A10',
-    gray900A30 = 'gray900A30',
-    gray900A70 = 'gray900A70'
 }
 
 enum VariusColors {
@@ -68,17 +50,17 @@ type VariusColorsType =
 
 type SystemColorsType =
     SystemColors |
-    LogoColors.logoBlue |
-    LogoColors.logoYellow |
-    WhiteAndBlack.white000 |
-    WhiteAndBlack.black000 |
-    WhiteAndBlack.realBlack |
-    WhiteAndBlackAlpha.white000A10 |
-    WhiteAndBlackAlpha.white000A30 |
-    WhiteAndBlackAlpha.white000A70 |
-    WhiteAndBlackAlpha.black000A10 |
-    WhiteAndBlackAlpha.gray900A30 |
-    WhiteAndBlackAlpha.gray900A70
+    "logoBlue" |
+    "logoYellow" |
+    "white000" |
+    "black000" |
+    "realBlack" |
+    "white000A10" |
+    "white000A30" |
+    "white000A70" |
+    "black000A10" |
+    "gray900A30" |
+    "gray900A70"
 
 export type BasicColorsType =
     SystemColorsType |
