@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import { getTypoStyle, Typography } from '../../styles/common/typo/typo'
+import { getTypoStyle, Typography } from '../../styles/foundation/typo/typo'
 import { CheckBoxProps } from '../../types'
 
 export const Label = styled.label<CheckBoxProps>`

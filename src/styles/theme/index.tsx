@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import lightThemeColors from '../common/colors/semanticColors'
+import lightThemeColors from '../foundation/colors/semanticColors'
 
 export const theme = {
   color: lightThemeColors,

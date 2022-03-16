@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import { getTypoStyle, Typography } from '../../styles/common/typo/typo'
+import { getTypoStyle, Typography } from '../../styles/foundation/typo/typo'
 import { BoxButtonProps } from '../../types'
 
 export const Button = styled.button<BoxButtonProps>`

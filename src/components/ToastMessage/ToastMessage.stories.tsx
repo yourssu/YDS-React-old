@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import ToastMessage from './ToastMessage'
+import { ToastMessage } from './ToastMessage'
 
 export default {
   title: 'Component/ToastMessage',

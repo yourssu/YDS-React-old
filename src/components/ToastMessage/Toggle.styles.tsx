@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { getTypoStyle, Typography } from '../../styles/common/typo/typo'
+import { getTypoStyle, Typography } from '../../styles/foundation/typo/typo'
 import { ToastMessageProps } from '../../types'
 
 export const ToastWrapper = styled.div`

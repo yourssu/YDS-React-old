@@ -1,5 +1,5 @@
 import '@emotion/react'
-import { SemanticColrs } from '../common/colors/colors-type'
+import { SemanticColrs } from '../foundation/colors/colors-type'
 
 declare module '@emotion/react' {
     export interface Theme {
