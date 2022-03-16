@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
 import React, { useCallback, useEffect, useState } from 'react'
 import { getTypoStyle, Typography } from '../../styles/common/typo/typo'
-import ThemeProvider from '../../styles/theme'
 
 const Content = styled.div`
   display: flex;
@@ -195,47 +194,45 @@ const Picker: React.VFC<ToogleProps> = ({ columns, onChange, ...props }) => {
   }, [])
 
   return (
-    <ThemeProvider>
-      <Content {...props}>
-        <div className="content-container">
-          {columns.map((column, colIdx) => (
-            <Wrapper
-              onMouseDown={onDragStart}
-              onMouseMove={(e) => onDrag(e, colIdx)}
-              onMouseUp={onDragEnd}
-              onDragEnd={onDragEnd}
-              className={`picker-wrapper-${colIdx}`}
-            >
-              <TopDim>
-                {topCotents[colIdx]?.map(
-                  (content) =>
-                    content && (
-                      <li className={content === '__null__' ? 'null' : ''}>
-                        <span>{content}</span>
-                      </li>
-                    ),
-                )}
-              </TopDim>
-              <Selected>
-                <li>
-                  <span>{column[selectedCotentIndex[colIdx]]}</span>
-                </li>
-              </Selected>
-              <BottomDim>
-                {bottomCotents[colIdx]?.map(
-                  (content) =>
-                    content && (
-                      <li className={content === '__null__' ? 'null' : ''}>
-                        <span>{content}</span>
-                      </li>
-                    ),
-                )}
-              </BottomDim>
-            </Wrapper>
-          ))}
-        </div>
-      </Content>
-    </ThemeProvider>
+    <Content {...props}>
+      <div className="content-container">
+        {columns.map((column, colIdx) => (
+          <Wrapper
+            onMouseDown={onDragStart}
+            onMouseMove={(e) => onDrag(e, colIdx)}
+            onMouseUp={onDragEnd}
+            onDragEnd={onDragEnd}
+            className={`picker-wrapper-${colIdx}`}
+          >
+            <TopDim>
+              {topCotents[colIdx]?.map(
+                (content) =>
+                  content && (
+                    <li className={content === '__null__' ? 'null' : ''}>
+                      <span>{content}</span>
+                    </li>
+                  ),
+              )}
+            </TopDim>
+            <Selected>
+              <li>
+                <span>{column[selectedCotentIndex[colIdx]]}</span>
+              </li>
+            </Selected>
+            <BottomDim>
+              {bottomCotents[colIdx]?.map(
+                (content) =>
+                  content && (
+                    <li className={content === '__null__' ? 'null' : ''}>
+                      <span>{content}</span>
+                    </li>
+                  ),
+              )}
+            </BottomDim>
+          </Wrapper>
+        ))}
+      </div>
+    </Content>
   )
 }
 

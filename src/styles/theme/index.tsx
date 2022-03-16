@@ -1,12 +1,11 @@
-import React from 'react'
-import { css, Global, ThemeProvider as TP } from '@emotion/react'
-import semanticColors from '../common/colors/semanticColors'
+import { css } from '@emotion/react'
+import lightThemeColors from '../common/colors/semanticColors'
 
-const theme = {
-  color: semanticColors,
+export const theme = {
+  color: lightThemeColors,
 }
 
-const GlobalStyles = css`
+export const GlobalStyles = css`
   @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
   html,
   body,
@@ -145,12 +144,3 @@ const GlobalStyles = css`
     }
   }
 `
-
-const ThemeProvider: React.FC = ({ children }) => (
-  <TP theme={theme}>
-    <Global styles={GlobalStyles} />
-    {children}
-  </TP>
-)
-
-export default ThemeProvider

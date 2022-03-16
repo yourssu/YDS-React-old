@@ -4,7 +4,6 @@ import React from 'react'
 import CheckIcon from '../../assets/CheckIcon'
 import EmptyCheckIcon from '../../assets/EmptyCheckIcon'
 import { getTypoStyle, Typography } from '../../styles/common/typo/typo'
-import ThemeProvider from '../../styles/theme'
 
 const Label = styled.label<CheckBoxProps>`
   width: fit-content;
@@ -106,14 +105,12 @@ const Checkbox: React.VFC<Props & React.HtmlHTMLAttributes<HTMLInputElement>> = 
   ...props
 }) => {
   return (
-    <ThemeProvider>
-      <Label isDisabled={isDisabled} isSelected={isSelected} size={size}>
-        {isSelected ? <CheckIcon className="check-icon" /> : <EmptyCheckIcon className="check-icon" />}
-        <div className="padding-box" />
-        <input className="checkbox" type="checkbox" {...props}></input>
-        {text}
-      </Label>
-    </ThemeProvider>
+    <Label isDisabled={isDisabled} isSelected={isSelected} size={size}>
+      {isSelected ? <CheckIcon className="check-icon" /> : <EmptyCheckIcon className="check-icon" />}
+      <div className="padding-box" />
+      <input className="checkbox" type="checkbox" {...props}></input>
+      {text}
+    </Label>
   )
 }
 

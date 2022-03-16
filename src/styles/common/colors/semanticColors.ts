@@ -1,7 +1,7 @@
 import basicColors from './basicColors';
 import * as type from './colors-type';
 
-const semanticColors: { [color in type.SemanticColrs]: string } = {
+const lightThemeColors: { [color in type.SemanticColrs]: string } = {
     bgNormal: basicColors.white000,
     bgElevated: basicColors.white000,
     bgRecomment: basicColors.gray050,
@@ -95,4 +95,4 @@ const semanticColors: { [color in type.SemanticColrs]: string } = {
     pinkItemText: basicColors.pink600
 }
 
-export default semanticColors;
+export default lightThemeColors;

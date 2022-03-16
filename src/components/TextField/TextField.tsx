@@ -6,7 +6,6 @@ import ClearIcon from '../../assets/ClearIcon'
 import EyeoffIcon from '../../assets/EyeoffIcon'
 import SearchIcon from '../../assets/SearchIcon'
 import { getTypoStyle, Typography } from '../../styles/common/typo/typo'
-import ThemeProvider from '../../styles/theme'
 
 const Label = styled.label`
   width: 350px;
@@ -138,31 +137,29 @@ const TextFiled: React.VFC<TextFieldProps> = ({
   ...props
 }) => {
   return (
-    <ThemeProvider>
-      <Label>
-        <InputContainer
+    <Label>
+      <InputContainer
+        isPositive={isPositive}
+        isDisabled={isDisabled}
+        isFocused={isFocused || Boolean(props.value)}
+        isNegative={isNegative}
+        searchPrefix={Boolean(searchPrefix)}
+      >
+        {searchPrefix}
+        <input disabled={isDisabled} placeholder={placeholder} {...props} />
+        {suffix}
+      </InputContainer>
+      {helperLabel && (
+        <HelperLabel
           isPositive={isPositive}
           isDisabled={isDisabled}
           isFocused={isFocused || Boolean(props.value)}
           isNegative={isNegative}
-          searchPrefix={Boolean(searchPrefix)}
         >
-          {searchPrefix}
-          <input disabled={isDisabled} placeholder={placeholder} {...props} />
-          {suffix}
-        </InputContainer>
-        {helperLabel && (
-          <HelperLabel
-            isPositive={isPositive}
-            isDisabled={isDisabled}
-            isFocused={isFocused || Boolean(props.value)}
-            isNegative={isNegative}
-          >
-            {helperLabel}
-          </HelperLabel>
-        )}
-      </Label>
-    </ThemeProvider>
+          {helperLabel}
+        </HelperLabel>
+      )}
+    </Label>
   )
 }
 
