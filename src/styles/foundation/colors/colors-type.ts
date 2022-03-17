@@ -2,28 +2,22 @@
  *  Basic Colors
  */
 
-enum SystemColor {
-    pointBlue = "pointBlue",
-    pointColor = "pointColor",
-    warningRed = "warningRed",
-    gray = "gray"
-}
+type SystemColor = "pointBlue" | "pointColor" | "warningRed" | "gray"
 
-enum VariusColors {
-    pink = 'pink',
-    red = 'red',
-    orange = 'orange',
-    yellow = 'yellow',
-    lime = 'lime',
-    green = 'green',
-    emerald = 'emerald',
-    aqua = 'aqua',
-    blue = 'blue',
-    indigo = 'indigo',
-    violet = 'violet',
-    purple = 'purple',
-    brown = 'brown'
-}
+type VariusColors =
+    'pink' |
+    'red' |
+    'orange' |
+    'yellow' |
+    'lime' |
+    'green' |
+    'emerald' |
+    'aqua' |
+    'blue' |
+    'indigo' |
+    'violet' |
+    'purple' |
+    'brown'
 
 type SystemColors =
     | `${SystemColor}050`
