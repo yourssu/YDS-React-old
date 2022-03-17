@@ -65,94 +65,86 @@ export type BasicColorsType =
  *  Semantic Colors
  */
 
-enum PalettesBackground {
-    bgNormal = 'bgNormal',
-    bgElevated = 'bgElevated',
-    bgRecomment = 'bgRecomment',
-    bgSelected = 'bgSelected',
-    bgPressed = 'bgPressed',
-    bgNormalReserved = 'bgNormalReserved',
-    bgElevatedReserved = 'bgElevatedReserved'
-}
+type PalettesBackground =
+    'bgNormal' |
+    'bgElevated' |
+    'bgRecomment' |
+    'bgSelected' |
+    'bgPressed' |
+    'bgNormalReserved' |
+    'bgElevatedReserved'
 
-enum PalettesText {
-    textPrimary = 'textPrimary',
-    textSecondary = 'textSecondary',
-    textTertiary = 'textTertiary',
-    textDisabled = 'textDisabled',
-    textReserved = 'textReserved',
-    textPointed = 'textPointed',
-    textWarned = 'textWarned'
-}
 
-enum PalettesDim {
-    dimNormal = 'dimNormal',
-    dimThick = 'dimThick',
-    dimThickReserved = 'dimThickReserved'
-}
+type PalettesText =
+    'textPrimary' |
+    'textSecondary' |
+    'textTertiary' |
+    'textDisabled' |
+    'textReserved' |
+    'textPointed' |
+    'textWarned'
 
-enum PalettesBorder {
-    borderThin = 'borderThin',
-    borderNormal = 'borderNormal',
-    borderThick = 'borderThick'
-}
+type PalettesDim =
+    "dimNormal" |
+    "dimThick" |
+    "dimThickReserved"
 
-enum PalettesButton {
-    buttonNormal = 'buttonNormal',
-    buttonNormalPressed = 'buttonNormalPressed',
-    buttonBG = 'buttonBG',
-    buttonEmojiBG = 'buttonEmojiBG',
-    buttonReserved = 'buttonReserved',
-    buttonDisabled = 'buttonDisabled',
-    buttonDisabledBG = 'buttonDisabledBG',
-    buttonPoint = 'buttonPoint',
-    buttonPointPressed = 'buttonPointPressed',
-    buttonPointBG = 'buttonPointBG',
-    buttonWarned = 'buttonWarned',
-    buttonWarnedPressed = 'buttonWarnedPressed',
-    buttonWarnedBG = 'buttonWarnedBG'
-}
+type PalettesBorder = "borderThin" |
+    "borderNormal" |
+    "borderThick"
 
-enum PalettesButtonBar {
-    buttonBarNormal = 'buttonBarNormal',
-    buttonBarSelected = 'buttonBarSelected',
-}
+type PalettesButton = "buttonNormal" |
+    "buttonNormalPressed" |
+    "buttonBG" |
+    "buttonEmojiBG" |
+    "buttonReserved" |
+    "buttonDisabled" |
+    "buttonDisabledBG" |
+    "buttonPoint" |
+    "buttonPointPressed" |
+    "buttonPointBG" |
+    "buttonWarned" |
+    "buttonWarnedPressed" |
+    "buttonWarnedBG"
 
-enum PalettesInputField {
-    inputFieldNormal = 'inputFieldNormal',
-    inputFieldElevated = 'inputFieldElevated',
-}
+type PalettesButtonBar =
+    "buttonBarNormal" |
+    "buttonBarSelected"
 
-enum PalettesToast {
-    toastBG = 'toastBG'
-}
+type PalettesInputField =
+    'inputFieldNormal' |
+    'inputFieldElevated'
 
-enum PalettesPressed {
-    preesed = 'pressed'
-}
+type PalettesToast =
+    'toastBG'
 
-enum PalettesShadow {
-    shadowThin = 'shadowThin',
-    shadowNormal = 'shadowNormal',
-}
 
-enum PalettesItems {
-    monoItem = 'monoItem',
-    limeItem = 'limeItem',
-    greenItem = 'greenItem',
-    emeraldItem = 'emeraldItem',
-    aquaItem = 'aquaItem',
-    blueItem = 'blueItem',
-    indigoItem = 'indigoItem',
-    violetItem = 'violetItem',
-    purpleItem = 'purpleItem',
-    pinkItem = 'pinkItem'
-}
+type PalettesPressed =
+    'pressed'
 
-enum PalettesToolTip {
-    tooltipBG = 'tooltipBG',
-    tooltipPoint = 'tooltipPoint',
-}
+
+type PalettesShadow =
+    'shadowThin' |
+    'shadowNormal'
+
+
+type PalettesItems =
+    'monoItem' |
+    'limeItem' |
+    'greenItem' |
+    'emeraldItem' |
+    'aquaItem' |
+    'blueItem' |
+    'indigoItem' |
+    'violetItem' |
+    'purpleItem' |
+    'pinkItem'
+
+
+type PalettesToolTip =
+    'tooltipBG' |
+    'tooltipPoint'
+
 
 type PalettesItemsType =
     `${PalettesItems}Primary` |
