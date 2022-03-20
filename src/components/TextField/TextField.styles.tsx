@@ -23,14 +23,14 @@ export const InputContainer = styled.div<TextFieldProps>`
   user-select: none;
 
   input {
+    ${getTypoStyle(Typography.Body1)};
     background-color: transparent;
     outline: none;
     border: 0px;
     width: 100%;
     margin: 12px 16px;
     caret-color: ${({ theme }) => theme.color.textPointed};
-
-    ${getTypoStyle(Typography.Body1)};
+    color: ${({ theme }) => theme.color.textPrimary};
     &::placeholder {
       color: ${({ theme, disabled }) => (disabled ? theme.color.textDisabled : theme.color.textTertiary)};
     }
