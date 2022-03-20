@@ -45,7 +45,7 @@ const SimpleTextField: React.VFC<SimpleTextFieldProps> = ({ onClickClearButton, 
   return (
     <TextFiled
       suffix={
-        <div className="suffix-icon" onClick={onClickClearButton}>
+        <div className="suffix-icon clear-icon" onClick={onClickClearButton}>
           <ClearIcon />
         </div>
       }

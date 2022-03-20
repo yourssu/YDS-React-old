@@ -47,6 +47,7 @@ export const InputContainer = styled.div<TextFieldProps>`
     height: 20px;
     margin: 16px 10px;
     margin-right: 0px;
+    fill: ${({ theme }) => theme.color.buttonNormal};
   }
 
   .suffix-icon {
