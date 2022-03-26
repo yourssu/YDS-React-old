@@ -26,8 +26,7 @@
     }
   },
   "rules": {
-    "import/no-extraneous-dependencies": "off",
-    "react/jsx-filename-extension": "off"
+    "import/no-extraneous-dependencies": "off"
   },
   "overrides": [
     {
@@ -44,6 +43,9 @@
       "plugins": [
         "@typescript-eslint"
       ],
+      "rules": {
+        "react/jsx-filename-extension": "off"
+      },
       "parserOptions": {
         "project": [
           "./tsconfig.eslint.json"
