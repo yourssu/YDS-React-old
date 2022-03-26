@@ -7,11 +7,7 @@
   },
   "extends": [
     "plugin:import/recommended",
-    "plugin:import/typescript",
     "plugin:react-hooks/recommended",
-    "airbnb-typescript",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "prettier"
   ],
   "parserOptions": {
@@ -22,8 +18,7 @@
     "sourceType": "module"
   },
   "plugins": [
-    "react-hooks",
-    "@typescript-eslint"
+    "react-hooks"
   ],
   "settings": {
     "react": {
@@ -40,9 +35,18 @@
         "*.ts",
         "*.tsx"
       ],
+      "extends": [
+        "plugin:import/typescript",
+        "airbnb-typescript",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+      ],
+      "plugins": [
+        "@typescript-eslint"
+      ],
       "parserOptions": {
         "project": [
-          "tsconfig.eslint.json"
+          "./tsconfig.eslint.json"
         ]
       }
     }
