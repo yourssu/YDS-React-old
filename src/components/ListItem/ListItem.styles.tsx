@@ -22,7 +22,6 @@ export const Wrapper = styled.ul<ListItemProps>`
 
 export const Item = styled.li`
   display: flex;
-  min-width: 286px;
   width: 100%;
   ${getTypoStyle(Typography.Body1)};
   color: ${({ theme }) => theme.color.textSecondary};
