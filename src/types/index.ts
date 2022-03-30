@@ -82,3 +82,8 @@ export type ListItemProps = {
 export type ListToogleItemProps = {
     isSelected?: boolean
 } & React.HTMLAttributes<HTMLUListElement>
+
+export type ListProps = {
+    subHeader?: React.ReactNode
+    listItems?: ListItemProps[] | ListToogleItemProps[]
+}

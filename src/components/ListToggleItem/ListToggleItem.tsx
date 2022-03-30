@@ -8,10 +8,8 @@ type Props = ListToogleItemProps
 export const ListToggleItem: React.VFC<Props> = ({ isSelected, children, ...props }) => {
   return (
     <Wrapper {...props}>
-      <div className="container">
-        <Item>{children}</Item>
-        <Toggle isSelected={isSelected || false} />
-      </div>
+      <Item>{children}</Item>
+      <Toggle isSelected={isSelected || false} />
     </Wrapper>
   )
 }

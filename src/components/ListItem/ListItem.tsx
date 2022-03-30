@@ -16,11 +16,9 @@ export const ListItem: React.VFC<Props> = ({
 }) => {
   return (
     <Wrapper {...props}>
-      <div className="container">
-        <div className="leftIconContainer">{leftIcon}</div>
-        <Item>{children}</Item>
-        <div className="rightIconContainer">{rightIcon}</div>
-      </div>
+      {leftIcon && <div className="leftIconContainer">{leftIcon}</div>}
+      <Item>{children}</Item>
+      {rightIcon && <div className="rightIconContainer">{rightIcon}</div>}
     </Wrapper>
   )
 }
