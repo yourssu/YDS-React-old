@@ -1,17 +1,6 @@
-import { css, keyframes, Theme } from '@emotion/react'
+import { css, Theme } from '@emotion/react'
 import styled from '@emotion/styled'
 import { ToggleProps } from '../../types'
-
-const thumbAnimation = keyframes`
-  from {
-    left: 0px
-  }
-
-  to {
-    right: 20px
-  }
-
-`
 
 const setToggleStyle = ({ isSelected, disabled, theme }: ToggleProps & { theme: Theme }) => {
   if (isSelected && !disabled) {
@@ -88,6 +77,7 @@ export const Label = styled.label<ToggleProps>`
     width: 27px;
     height: 27px;
     border-radius: 50%;
+    transition: left 100ms;
 
     &::before {
       position: absolute;
