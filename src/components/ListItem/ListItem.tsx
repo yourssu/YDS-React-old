@@ -4,8 +4,8 @@ import { ListItemProps } from '../../types'
 import { Item, Wrapper } from './ListItem.styles'
 
 type Props = {
-  leftIcon: JSX.Element | React.ReactElement | React.ReactNode
-  rightIcon: JSX.Element | React.ReactElement | React.ReactNode
+  leftIcon?: JSX.Element | React.ReactElement | React.ReactNode
+  rightIcon?: JSX.Element | React.ReactElement | React.ReactNode
 } & ListItemProps
 
 export const ListItem: React.VFC<Props> = ({

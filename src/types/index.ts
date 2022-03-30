@@ -77,5 +77,8 @@ export type BadgeProps = {
 
 export type ListItemProps = {
     isPressed?: boolean
+} & React.HTMLAttributes<HTMLUListElement>
 
+export type ListToogleItemProps = {
+    isSelected?: boolean
 } & React.HTMLAttributes<HTMLUListElement>
