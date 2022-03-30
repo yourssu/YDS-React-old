@@ -8,7 +8,13 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof ListItem>
 
-const Template: ComponentStory<typeof ListItem> = (args) => <ListItem {...args} />
+const Template: ComponentStory<typeof ListItem> = (args) => {
+  return (
+    <div style={{ width: '400px' }}>
+      <ListItem {...args} />
+    </div>
+  )
+}
 
 export const Primary = Template.bind({})
 Primary.args = {
