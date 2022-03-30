@@ -6,7 +6,6 @@ export const Wrapper = styled.ul<ListItemProps>`
   .container {
     display: flex;
     width: 100%;
-    min-width: 390px;
     min-height: 48px;
     background-color: ${({ isPressed, theme }) => (isPressed ? theme.color.bgPressed : 'transparent')};
     align-items: center;
