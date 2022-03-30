@@ -73,3 +73,9 @@ export type BadgeProps = {
     icon: boolean
     color: 'mono' | 'green' | 'emerald' | 'aqua' | 'blue' | 'indigo' | 'violet' | 'purple' | 'pink'
 } & React.HtmlHTMLAttributes<HTMLDivElement>
+
+
+export type ListItemProps = {
+    isPressed?: boolean
+
+} & React.HTMLAttributes<HTMLUListElement>

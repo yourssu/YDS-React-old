@@ -1,6 +1,17 @@
-import { css, Theme } from '@emotion/react'
+import { css, keyframes, Theme } from '@emotion/react'
 import styled from '@emotion/styled'
 import { ToggleProps } from '../../types'
+
+const thumbAnimation = keyframes`
+  from {
+    left: 0px
+  }
+
+  to {
+    right: 20px
+  }
+
+`
 
 const setToggleStyle = ({ isSelected, disabled, theme }: ToggleProps & { theme: Theme }) => {
   if (isSelected && !disabled) {
