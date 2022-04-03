@@ -18,7 +18,8 @@
     "sourceType": "module"
   },
   "plugins": [
-    "react-hooks"
+    "react-hooks",
+    "prettier"
   ],
   "settings": {
     "react": {
