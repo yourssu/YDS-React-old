@@ -5,11 +5,7 @@ const camelCase = require('camelcase')
 const fs = require('fs-extra')
 const { DOMParser, XMLSerializer } = require('xmldom')
 const prettier = require('prettier')
-
-const svg16IconsPath = path.resolve(__dirname, '../icons/16')
-const svg20IconsPath = path.resolve(__dirname, '../icons/20')
-const svg24IconsPath = path.resolve(__dirname, '../icons/24')
-const svg48IconsPath = path.resolve(__dirname, '../icons/48')
+const svg24IconsPath = path.resolve(__dirname, '../icons')
 
 const iconsPath = path.resolve(__dirname, '../src/icons/generated')
 const iconsIndexPath = path.resolve(__dirname, '../src/icons/index.ts')
@@ -21,15 +17,11 @@ async function main() {
   /* Clean generated icons */
   await fs.emptyDir(iconsPath)
   /* Construct icon map from original svg */
-  const svg16Icons = (await fs.readdir(svg16IconsPath)).map((name) => path.resolve(svg16IconsPath, name))
-  const svg20Icons = (await fs.readdir(svg20IconsPath)).map((name) => path.resolve(svg20IconsPath, name))
-  const svg24Icons = (await fs.readdir(svg24IconsPath)).map((name) => path.resolve(svg24IconsPath, name))
-  const svg48Icons = (await fs.readdir(svg48IconsPath)).map((name) => path.resolve(svg48IconsPath, name))
+  const svgIcons = (await fs.readdir(svg24IconsPath)).map((name) => path.resolve(svg24IconsPath, name))
   const iconFiles = {}
-  const iconReadPromises = [...svg16Icons, ...svg20Icons, ...svg24Icons, ...svg48Icons].map((icon) => {
-    const iconSize = path.basename(path.dirname(icon))
+  const iconReadPromises = svgIcons.map((icon) => {
     const iconFileName = path.basename(icon, '.svg')
-    const iconName = camelCase(iconFileName.substring(3), { pascalCase: true }) + iconSize + 'Icon'
+    const iconName = camelCase(iconFileName.substring(3), { pascalCase: true }) + 'Icon'
     return fs.readFile(icon, 'utf8').then((file) => {
       iconFiles[iconName] = file.toString()
     })
@@ -42,8 +34,6 @@ async function main() {
     svgElem.setAttribute('fill', 'current')
     camelize(svgElem)
     Array.from(dom.getElementsByTagName('path')).forEach((p) => p.removeAttribute('fill'))
-    const width = svgElem.getAttribute('width')
-    const height = svgElem.getAttribute('height')
     const viewBox = svgElem.getAttribute('viewBox')
     const innerSvg = Array.from(svgElem.childNodes)
       .map((v) => serializer.serializeToString(v))
@@ -53,7 +43,7 @@ async function main() {
       `import React, { memo, forwardRef } from 'react';
 
 export const ${name} = memo(forwardRef<SVGSVGElement>((props, ref) => (
-<svg ref={ref} width="${width}" height="${height}" viewBox="${viewBox}" fill="current" xmlns="http://www.w3.org/2000/svg" {...props}>
+<svg ref={ref} viewBox="${viewBox}" fill="current" xmlns="http://www.w3.org/2000/svg" {...props}>
   ${innerSvg}
 </svg>
 )));`
