@@ -8,7 +8,7 @@ const setToggleStyle = ({ isSelected, disabled, theme }: ToggleProps & { theme: 
       background-color: ${theme.color.buttonPoint};
       .thumb {
         background-color: ${theme.color.buttonReserved};
-        left: 22px;
+        transform: translateX(22px);
         margin: 2px;
         margin-left: 0px;
       }
@@ -21,7 +21,7 @@ const setToggleStyle = ({ isSelected, disabled, theme }: ToggleProps & { theme: 
       cursor: not-allowed;
       .thumb {
         background-color: ${theme.color.buttonDisabled};
-        left: 22px;
+        transform: translateX(22px);
         margin: 2px;
         margin-left: 0px;
       }
@@ -33,7 +33,6 @@ const setToggleStyle = ({ isSelected, disabled, theme }: ToggleProps & { theme: 
       background-color: ${theme.color.buttonBG};
       .thumb {
         background-color: ${theme.color.buttonReserved};
-        left: 0px;
         margin: 2px;
         margin-right: 0px;
       }
@@ -46,7 +45,6 @@ const setToggleStyle = ({ isSelected, disabled, theme }: ToggleProps & { theme: 
       cursor: not-allowed;
       .thumb {
         background-color: ${theme.color.buttonDisabled};
-        left: 0px;
         margin: 2px;
         margin-right: 0px;
       }
@@ -75,9 +73,9 @@ export const Label = styled.label<ToggleProps>`
   .thumb {
     position: absolute;
     width: 27px;
+    transition: transform 100ms;
     height: 27px;
     border-radius: 50%;
-    transition: left 100ms;
 
     &::before {
       position: absolute;

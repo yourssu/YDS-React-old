@@ -10,7 +10,6 @@ export const Wrapper = styled.ul<ListItemProps>`
   background-color: ${({ isPressed, theme }) => (isPressed ? theme.color.bgPressed : 'transparent')};
   align-items: center;
   padding: 0 20px;
-
   justify-content: space-between;
 `
 
