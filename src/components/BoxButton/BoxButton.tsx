@@ -1,7 +1,7 @@
 import React from 'react'
 import ChatIcon from '../../assets/ChatIcon'
 import { BoxButtonProps } from '../../types'
-import { Button } from './BoxButton.styles'
+import * as Styled from './BoxButton.styles'
 
 export interface Props extends BoxButtonProps {
   /** Button Icon */
@@ -13,10 +13,10 @@ export interface Props extends BoxButtonProps {
 
 export const BoxButton: React.FC<Props> = ({ leftIcon = <ChatIcon />, title, ...props }) => {
   return (
-    <Button disabled={props.isDisabled} {...props}>
+    <Styled.Button disabled={props.isDisabled} {...props}>
       <>{leftIcon}</>
       <div className="padding--4" style={{ paddingLeft: '4px' }} />
       <>{title}</>
-    </Button>
+    </Styled.Button>
   )
 }

@@ -73,8 +73,8 @@ export const Label = styled.label<ToggleProps>`
   .thumb {
     position: absolute;
     width: 27px;
-    transition: transform 100ms;
     height: 27px;
+    transition: transform 100ms;
     border-radius: 50%;
 
     &::before {

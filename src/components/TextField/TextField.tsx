@@ -4,7 +4,7 @@ import ClearIcon from '../../assets/ClearIcon'
 import EyeoffIcon from '../../assets/EyeoffIcon'
 import SearchIcon from '../../assets/SearchIcon'
 import { TextFieldProps } from '../../types'
-import { HelperLabel, InputContainer, Label } from './TextField.styles'
+import * as Styled from './TextField.styles'
 
 const TextFiled: React.VFC<TextFieldProps> = ({
   placeholder,
@@ -16,8 +16,8 @@ const TextFiled: React.VFC<TextFieldProps> = ({
   ...props
 }) => {
   return (
-    <Label>
-      <InputContainer
+    <Styled.Label>
+      <Styled.InputContainer
         isPositive={isPositive}
         disabled={props.disabled}
         isNegative={isNegative}
@@ -26,13 +26,18 @@ const TextFiled: React.VFC<TextFieldProps> = ({
         {searchPrefix}
         <input disabled={props.disabled} placeholder={placeholder} {...props} />
         {suffix}
-      </InputContainer>
+      </Styled.InputContainer>
       {helperLabel && (
-        <HelperLabel className="helper-label" isPositive={isPositive} disabled={props.disabled} isNegative={isNegative}>
+        <Styled.HelperLabel
+          className="helper-label"
+          isPositive={isPositive}
+          disabled={props.disabled}
+          isNegative={isNegative}
+        >
           {helperLabel}
-        </HelperLabel>
+        </Styled.HelperLabel>
       )}
-    </Label>
+    </Styled.Label>
   )
 }
 

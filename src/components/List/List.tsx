@@ -1,20 +1,20 @@
 import React from 'react'
 import { ListProps } from '../../types'
-import { SubHeader, Wrapper, ListItems } from './List.styles'
+import * as Styled from './List.styles'
 
 type Props = ListProps
 
 export const List: React.VFC<Props> = ({ subHeader, listItems, ...props }) => {
   return (
-    <Wrapper {...props}>
+    <Styled.Wrapper {...props}>
       <div className="container">
-        {subHeader && <SubHeader>{subHeader}</SubHeader>}
-        <ListItems>
+        {subHeader && <Styled.SubHeader>{subHeader}</Styled.SubHeader>}
+        <Styled.ListItems>
           {listItems?.map((list) => (
             <div className="listItem-container">{list}</div>
           ))}
-        </ListItems>
+        </Styled.ListItems>
       </div>
-    </Wrapper>
+    </Styled.Wrapper>
   )
 }

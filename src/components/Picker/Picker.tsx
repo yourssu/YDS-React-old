@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { PickerProps } from '../../types'
-import { BottomDim, Content, Selected, TopDim, Wrapper } from './Picker.styles'
+import * as Styled from './Picker.styles'
 
 const Picker: React.VFC<PickerProps> = ({ columns, onChange, ...props }) => {
   const [topCotents, setTopCotents] = useState<PickerProps['columns']>([[]])
@@ -94,10 +94,10 @@ const Picker: React.VFC<PickerProps> = ({ columns, onChange, ...props }) => {
   }, [])
 
   return (
-    <Content {...props}>
+    <Styled.Content {...props}>
       <div className="content-container">
         {columns.map((column, colIdx) => (
-          <Wrapper
+          <Styled.Wrapper
             key={`picker-wrapper-${colIdx}--key`}
             onMouseDown={onDragStart}
             onMouseMove={(e) => onDrag(e, colIdx)}
@@ -105,7 +105,7 @@ const Picker: React.VFC<PickerProps> = ({ columns, onChange, ...props }) => {
             onDragEnd={onDragEnd}
             className={`picker-wrapper-${colIdx}`}
           >
-            <TopDim>
+            <Styled.TopDim>
               {topCotents[colIdx]?.map(
                 (content, i) =>
                   content && (
@@ -114,13 +114,13 @@ const Picker: React.VFC<PickerProps> = ({ columns, onChange, ...props }) => {
                     </li>
                   ),
               )}
-            </TopDim>
-            <Selected>
+            </Styled.TopDim>
+            <Styled.Selected>
               <li>
                 <span>{column[selectedCotentIndex[colIdx]]}</span>
               </li>
-            </Selected>
-            <BottomDim>
+            </Styled.Selected>
+            <Styled.BottomDim>
               {bottomCotents[colIdx]?.map(
                 (content, i) =>
                   content && (
@@ -129,11 +129,11 @@ const Picker: React.VFC<PickerProps> = ({ columns, onChange, ...props }) => {
                     </li>
                   ),
               )}
-            </BottomDim>
-          </Wrapper>
+            </Styled.BottomDim>
+          </Styled.Wrapper>
         ))}
       </div>
-    </Content>
+    </Styled.Content>
   )
 }
 
