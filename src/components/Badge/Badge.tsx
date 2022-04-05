@@ -8,13 +8,13 @@ interface Props extends BadgeProps {
   title: string
 }
 
-export const Badge: React.VFC<Props> = ({ leftIcon = <ChatIcon />, title, ...props }) => {
+export const Badge: React.VFC<Props> = ({ leftIcon, title, ...props }) => {
   return (
     <Styled.Wrapper {...props}>
       <>{props.icon && leftIcon && leftIcon}</>
-      <div className="padding--4" style={{ paddingLeft: '4px' }} />
+      <Styled.Padding padding="0 0 0 4px" />
       <>{title}</>
-      {(!leftIcon || !props.icon) && <div className="padding--4" style={{ paddingRight: '4px' }} />}
+      {(!leftIcon || !props.icon) && <Styled.Padding padding="0 4px 0 0" />}
     </Styled.Wrapper>
   )
 }

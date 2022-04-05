@@ -45,7 +45,9 @@
         "@typescript-eslint"
       ],
       "rules": {
-        "react/jsx-filename-extension": "off"
+        "react/jsx-filename-extension": "off",
+        "@typescript-eslint/semi": "on",
+        "semi": ["error", "never"]
       },
       "parserOptions": {
         "project": [
