@@ -8,6 +8,7 @@
   "extends": [
     "plugin:import/recommended",
     "plugin:react-hooks/recommended",
+    "airbnb",
     "prettier"
   ],
   "parserOptions": {
@@ -27,7 +28,12 @@
     }
   },
   "rules": {
-    "import/no-extraneous-dependencies": "off"
+    "no-confusing-arrow": "off",
+    "implicit-arrow-linebreak": "off",
+    "import/no-extraneous-dependencies": "off",
+    "prettier/prettier": [
+      "error"
+    ]
   },
   "overrides": [
     {
@@ -37,15 +43,27 @@
       ],
       "extends": [
         "plugin:import/typescript",
+        "airbnb",
         "airbnb-typescript",
+        "airbnb/hooks",
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking"
       ],
       "plugins": [
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "react-hooks",
+        "prettier"
       ],
       "rules": {
-        "react/jsx-filename-extension": "off"
+        "react/prop-types": "off",
+        "no-confusing-arrow": "off",
+        "implicit-arrow-linebreak": "off",
+        "react/jsx-filename-extension": "off",
+        "import/no-extraneous-dependencies": "off",
+        "prettier/prettier": [
+          "error"
+        ],
+        "@typescript-eslint/semi": "off"
       },
       "parserOptions": {
         "project": [
