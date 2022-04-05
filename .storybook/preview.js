@@ -16,7 +16,7 @@ export const parameters = {
 const isDarkMode = false
 
 addDecorator((story) => (
-  <YDSProvider theme={!isDarkMode ? DarkTheme : LightTheme}>
+  <YDSProvider theme={isDarkMode ? DarkTheme : LightTheme}>
     <Global styles={GlobalStyles} />
     {story()}
   </YDSProvider>

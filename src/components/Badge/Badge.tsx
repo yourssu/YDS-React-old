@@ -1,7 +1,7 @@
 import React from 'react'
 import ChatIcon from '../../assets/ChatIcon'
 import { BadgeProps } from '../../types'
-import { Wrapper } from './Badge.styles'
+import * as Styled from './Badge.styles'
 
 interface Props extends BadgeProps {
   leftIcon?: React.ReactNode
@@ -10,11 +10,11 @@ interface Props extends BadgeProps {
 
 export const Badge: React.VFC<Props> = ({ leftIcon = <ChatIcon />, title, ...props }) => {
   return (
-    <Wrapper {...props}>
+    <Styled.Wrapper {...props}>
       <>{props.icon && leftIcon && leftIcon}</>
       <div className="padding--4" style={{ paddingLeft: '4px' }} />
       <>{title}</>
       {(!leftIcon || !props.icon) && <div className="padding--4" style={{ paddingRight: '4px' }} />}
-    </Wrapper>
+    </Styled.Wrapper>
   )
 }
