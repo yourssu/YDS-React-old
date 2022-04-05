@@ -1,5 +1,4 @@
 import React from 'react'
-import ChatIcon from '../../assets/ChatIcon'
 import { BoxButtonProps } from '../../types'
 import * as Styled from './BoxButton.styles'
 
@@ -11,7 +10,7 @@ export interface Props extends BoxButtonProps {
   title: string
 }
 
-export const BoxButton: React.FC<Props> = ({ leftIcon = <ChatIcon />, title, ...props }) => {
+export const BoxButton: React.FC<Props> = ({ leftIcon, title, ...props }) => {
   return (
     <Styled.Button disabled={props.isDisabled} {...props}>
       <>{leftIcon}</>

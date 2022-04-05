@@ -1,5 +1,4 @@
 import React from 'react'
-import ChatIcon from '../../assets/ChatIcon'
 import { BadgeProps } from '../../types'
 import * as Styled from './Badge.styles'
 
