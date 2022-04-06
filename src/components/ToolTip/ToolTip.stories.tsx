@@ -10,7 +10,13 @@ export default {
 
 const Template: ComponentStory<typeof Tooltip> = (args) => (
   <div
-    style={{ backgroundColor: '#c4c4c4eb', width: '374px', height: '400px', paddingTop: '16px', paddingBottom: '16px' }}
+    style={{
+      backgroundColor: '#c4c4c4eb',
+      width: '374px',
+      height: '400px',
+      paddingTop: '16px',
+      paddingBottom: '16px',
+    }}
   >
     <Tooltip {...args} />
   </div>
