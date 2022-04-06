@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { BoxButtonProps } from '../../types'
 import * as Styled from './BoxButton.styles'
 
@@ -10,12 +10,12 @@ export interface Props extends BoxButtonProps {
   title: string
 }
 
-export const BoxButton: React.FC<Props> = ({ leftIcon, title, ...props }) => {
+export const BoxButton = forwardRef<HTMLDivElement, Props>(({ leftIcon, title, ...props }) => {
   return (
     <Styled.Button disabled={props.isDisabled} {...props}>
       <>{leftIcon}</>
-      <div className="padding--4" style={{ paddingLeft: '4px' }} />
+      <Styled.Padding padding="0 0 0 4px" />
       <>{title}</>
     </Styled.Button>
   )
-}
+})

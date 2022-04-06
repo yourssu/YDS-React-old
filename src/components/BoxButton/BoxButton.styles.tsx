@@ -195,3 +195,7 @@ export const Button = styled.button<BoxButtonProps>`
   }
   ${({ size, types }) => getSizeStyle({ size, types })};
 `
+
+export const Padding = styled.div<{ padding: string }>`
+  padding: ${({ padding }) => padding};
+`
