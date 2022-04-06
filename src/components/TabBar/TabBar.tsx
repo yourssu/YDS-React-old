@@ -1,15 +1,23 @@
-import React, { forwardRef } from 'react'
+import React, { createContext, forwardRef, useMemo, useState } from 'react'
 import styled from '@emotion/styled'
 import { ArrowLeftLineIcon, ArrowRightLineIcon } from '../../icons'
 import { Divider } from '../Divider/Divider'
-import { Tab, TabItem } from './Tab'
+import { Tab, TabBase } from './Tab'
 
 export interface TabBarProps {
   scrollable: boolean
   navigation: boolean
   children: React.ReactNode
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+  value: string
+  onChange?: (id: string) => void
 }
+
+export interface TabBarState {
+  id: string | undefined
+  setId: (id: string) => void
+}
+
+export const TabBarContext = createContext<TabBarState | undefined>(undefined)
 
 const TabBarNavigation = styled.button`
   width: 24px;
@@ -33,7 +41,7 @@ const TabList = styled.div<{ scrollable: boolean }>`
     display: none;
   }
 
-  ${TabItem} {
+  ${TabBase} {
     width: ${({ scrollable }) => (scrollable ? '88px' : 'auto')};
   }
 `
@@ -48,8 +56,31 @@ const TabBarWrapper = styled.div<{ scrollable: boolean; navigation: boolean }>`
   }
 `
 
+export interface TabBarProviderProps {
+  children: React.ReactNode
+  onChange: (id: string) => void
+}
+
+function TabBarProvider({ children, onChange }: TabBarProviderProps) {
+  const [id, setId] = useState<string | undefined>(undefined)
+  const changeId = (newId: string) => {
+    setId(newId)
+    onChange(newId)
+  }
+
+  const value = useMemo(
+    () => ({
+      id,
+      setId: changeId,
+    }),
+    [id],
+  )
+
+  return <TabBarContext.Provider value={value}>{children}</TabBarContext.Provider>
+}
+
 export const TabBar = forwardRef<HTMLDivElement, TabBarProps>((props, ref) => (
-  <>
+  <TabBarProvider onChange={props.onChange ?? ((id) => {})}>
     <TabBarWrapper scrollable={props.scrollable} navigation={props.navigation} ref={ref}>
       <TabBarNavigation>
         <ArrowLeftLineIcon />
@@ -60,5 +91,5 @@ export const TabBar = forwardRef<HTMLDivElement, TabBarProps>((props, ref) => (
       </TabBarNavigation>
     </TabBarWrapper>
     <Divider thickness="thin" direction="horizontal" />
-  </>
+  </TabBarProvider>
 ))
