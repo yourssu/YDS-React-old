@@ -15,7 +15,9 @@ export const TabBase = styled.button<TabProps>`
   background-color: ${({ theme }) => theme.color.bgElevated};
   ${getTypoStyle(Typography.Button2)};
   color: ${({ selected, theme }) => (selected ? theme.color.bottomBarSelected : theme.color.bottomBarNormal)};
-  border: none;
+  border-width: ${({ selected }) => (selected ? '0 0 2px' : '0')};
+  border-bottom-color: ${({ theme }) => theme.color.bottomBarSelected};
+  box-sizing: border-box;
 
   &:active {
     background-color: ${({ theme }) => theme.color.buttonNormalPressed};
