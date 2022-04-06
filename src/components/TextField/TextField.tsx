@@ -25,8 +25,15 @@ const TextFiled: React.VFC<TextFieldProps> = ({
         searchPrefix={Boolean(searchPrefix)}
       >
         {searchPrefix}
-        <input disabled={props.disabled} placeholder={placeholder} {...props} />
-        {suffix}
+        <Styled.InputWrapper>
+          <Styled.Input
+            disabled={props.disabled}
+            searchPrefix={Boolean(searchPrefix)}
+            placeholder={placeholder}
+            {...props}
+          />
+          {suffix}
+        </Styled.InputWrapper>
       </Styled.InputContainer>
       {helperLabel && (
         <Styled.HelperLabel
@@ -109,7 +116,7 @@ const PasswordTextField: React.VFC<PasswordTextFieldProps> = ({ suffix, onClickC
       type={isHide ? 'password' : 'text'}
       suffix={
         <div
-          className="suffix-icon"
+          className="suffix-icon eye-icon"
           onClick={() => {
             setIsHide((prev) => !prev)
           }}

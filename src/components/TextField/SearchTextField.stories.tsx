@@ -17,7 +17,11 @@ const Template: ComponentStory<typeof SearchTextField> = (args) => {
     setValue('')
   }
   const newArgs = { ...args, value, onChange, onClickClearButton }
-  return <SearchTextField {...newArgs} />
+  return (
+    <div style={{ width: '350px' }}>
+      <SearchTextField {...newArgs} />
+    </div>
+  )
 }
 
 export const Primary = Template.bind({})
