@@ -13,8 +13,8 @@ export interface TabBarProps {
 }
 
 export interface TabBarState {
-  id: string | undefined
-  setId: (id: string) => void
+  value: string | undefined
+  setValue: (id: string) => void
 }
 
 export const TabBarContext = createContext<TabBarState | undefined>(undefined)
@@ -62,21 +62,21 @@ export interface TabBarProviderProps {
 }
 
 function TabBarProvider({ children, onChange }: TabBarProviderProps) {
-  const [id, setId] = useState<string | undefined>(undefined)
-  const changeId = (newId: string) => {
-    setId(newId)
-    onChange(newId)
+  const [value, setValue] = useState<string | undefined>(undefined)
+  const changeValue = (newValue: string) => {
+    setValue(newValue)
+    onChange(newValue)
   }
 
-  const value = useMemo(
+  const state = useMemo(
     () => ({
-      id,
-      setId: changeId,
+      value,
+      setValue: changeValue,
     }),
-    [id],
+    [value],
   )
 
-  return <TabBarContext.Provider value={value}>{children}</TabBarContext.Provider>
+  return <TabBarContext.Provider value={state}>{children}</TabBarContext.Provider>
 }
 
 export const TabBar = forwardRef<HTMLDivElement, TabBarProps>((props, ref) => {

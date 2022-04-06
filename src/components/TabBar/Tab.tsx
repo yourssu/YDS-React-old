@@ -25,23 +25,23 @@ export const TabBase = styled.button<TabProps>`
 `
 
 export const Tab = forwardRef<HTMLButtonElement, TabProps>((props, ref) => {
-  const { id, setId } = useContext(TabBarContext) ?? {
-    id: undefined,
-    setId: () => {},
+  const { value, setValue } = useContext(TabBarContext) ?? {
+    value: undefined,
+    setValue: () => {},
   }
-  if (props.selected && id === undefined) setId(props.value)
+  if (props.selected && value === undefined) setValue(props.value)
   const [selected, setSelected] = useState(props.selected)
-  const updateId = () => {
-    setId(props.value)
+  const updateValue = () => {
+    setValue(props.value)
     setSelected(true)
   }
 
   useEffect(() => {
-    setSelected(id === props.value)
-  }, [id, props.value])
+    setSelected(value === props.value)
+  }, [value, props.value])
 
   return (
-    <TabBase ref={ref} value={props.value} selected={selected} onClick={updateId}>
+    <TabBase ref={ref} value={props.value} selected={selected} onClick={updateValue}>
       {props.children}
     </TabBase>
   )
