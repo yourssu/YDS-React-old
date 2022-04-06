@@ -1,4 +1,4 @@
-import React, { createContext, forwardRef, useMemo, useState } from 'react'
+import React, { createContext, forwardRef, useMemo, useRef, useState } from 'react'
 import styled from '@emotion/styled'
 import { ArrowLeftLineIcon, ArrowRightLineIcon } from '../../icons'
 import { Divider } from '../Divider/Divider'
@@ -42,7 +42,7 @@ const TabList = styled.div<{ scrollable: boolean }>`
   }
 
   ${TabBase} {
-    width: ${({ scrollable }) => (scrollable ? '88px' : 'auto')};
+    min-width: ${({ scrollable }) => (scrollable ? '88px' : 'auto')};
   }
 `
 
@@ -79,17 +79,45 @@ function TabBarProvider({ children, onChange }: TabBarProviderProps) {
   return <TabBarContext.Provider value={value}>{children}</TabBarContext.Provider>
 }
 
-export const TabBar = forwardRef<HTMLDivElement, TabBarProps>((props, ref) => (
-  <TabBarProvider onChange={props.onChange ?? ((id) => {})}>
-    <TabBarWrapper scrollable={props.scrollable} navigation={props.navigation} ref={ref}>
-      <TabBarNavigation>
-        <ArrowLeftLineIcon />
-      </TabBarNavigation>
-      <TabList scrollable={props.scrollable}>{props.children}</TabList>
-      <TabBarNavigation>
-        <ArrowRightLineIcon />
-      </TabBarNavigation>
-    </TabBarWrapper>
-    <Divider thickness="thin" direction="horizontal" />
-  </TabBarProvider>
-))
+export const TabBar = forwardRef<HTMLDivElement, TabBarProps>((props, ref) => {
+  const listRef = useRef<HTMLDivElement>(null)
+
+  const onWheel = (event: React.WheelEvent<HTMLDivElement>) => {
+    if (listRef?.current) {
+      event.preventDefault()
+      listRef.current.scrollLeft += event.deltaY
+    }
+  }
+
+  const scrollPage = (isPositive: boolean) => {
+    if (listRef?.current) {
+      const pos = listRef.current.scrollLeft
+      const cWidth = listRef.current.clientWidth
+      const sWidth = listRef.current.scrollWidth
+      if (isPositive) {
+        const newPos = pos + cWidth
+        listRef.current.scrollLeft = newPos > sWidth ? sWidth - cWidth : newPos
+      } else {
+        const newPos = pos - cWidth
+        listRef.current.scrollLeft = newPos < 0 ? 0 : newPos
+      }
+    }
+  }
+
+  return (
+    <TabBarProvider onChange={props.onChange ?? (() => {})}>
+      <TabBarWrapper scrollable={props.scrollable} navigation={props.navigation} ref={ref}>
+        <TabBarNavigation onClick={() => scrollPage(false)}>
+          <ArrowLeftLineIcon />
+        </TabBarNavigation>
+        <TabList ref={listRef} scrollable={props.scrollable} onWheel={onWheel}>
+          {props.children}
+        </TabList>
+        <TabBarNavigation onClick={() => scrollPage(true)}>
+          <ArrowRightLineIcon />
+        </TabBarNavigation>
+      </TabBarWrapper>
+      <Divider thickness="thin" direction="horizontal" />
+    </TabBarProvider>
+  )
+})

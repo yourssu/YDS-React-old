@@ -17,6 +17,11 @@ const Template: ComponentStory<typeof TabBar> = (args) => (
     </Tab>
     <Tab value="2">Tab 2</Tab>
     <Tab value="3">Tab 3</Tab>
+    <Tab value="4">Tab 4</Tab>
+    <Tab value="5">Tab 5</Tab>
+    <Tab value="6">Tab 6</Tab>
+    <Tab value="7">Tab 7</Tab>
+    <Tab value="8">Tab 8</Tab>
   </TabBar>
 )
 
