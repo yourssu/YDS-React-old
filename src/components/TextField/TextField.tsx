@@ -3,6 +3,7 @@ import CheckIcon from '../../assets/CheckIcon'
 import ClearIcon from '../../assets/ClearIcon'
 import EyeoffIcon from '../../assets/EyeoffIcon'
 import SearchIcon from '../../assets/SearchIcon'
+import { EyeclosedLineIcon, EyeopenLineIcon, SearchLineIcon, XLineIcon } from '../../icons'
 import { TextFieldProps } from '../../types'
 import * as Styled from './TextField.styles'
 
@@ -51,7 +52,7 @@ const SimpleTextField: React.VFC<SimpleTextFieldProps> = ({ onClickClearButton, 
     <TextFiled
       suffix={
         <div className="suffix-icon clear-icon" onClick={onClickClearButton}>
-          <ClearIcon />
+          <XLineIcon />
         </div>
       }
       {...props}
@@ -78,14 +79,14 @@ const SearchTextField: React.VFC<SearchTextFieldProps> = ({ suffix, onClickClear
     <TextFiled
       suffix={
         <div className="suffix-icon" onClick={onClickClearButton}>
-          <ClearIcon />
+          <XLineIcon />
         </div>
       }
       type="email"
       helperLabel=""
       searchPrefix={
         <div className="search-icon">
-          <SearchIcon />
+          <SearchLineIcon />
         </div>
       }
       {...props}
@@ -113,7 +114,7 @@ const PasswordTextField: React.VFC<PasswordTextFieldProps> = ({ suffix, onClickC
             setIsHide((prev) => !prev)
           }}
         >
-          {isHide ? <EyeoffIcon /> : <CheckIcon />}
+          {isHide ? <EyeclosedLineIcon /> : <EyeopenLineIcon />}
         </div>
       }
       helperLabel=""
