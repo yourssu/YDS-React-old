@@ -10,9 +10,9 @@ export interface Props extends BoxButtonProps {
   title: string
 }
 
-export const BoxButton = forwardRef<HTMLDivElement, Props>(({ leftIcon, title, ...props }) => {
+export const BoxButton = forwardRef<HTMLButtonElement, Props>(({ leftIcon, title, ...props }, ref) => {
   return (
-    <Styled.Button disabled={props.isDisabled} {...props}>
+    <Styled.Button disabled={props.isDisabled} {...props} ref={ref}>
       <>{leftIcon}</>
       <Styled.Padding padding="0 0 0 4px" />
       <>{title}</>
