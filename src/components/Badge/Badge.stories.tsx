@@ -2,7 +2,6 @@ import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { GroundLineIcon } from '../../icons'
 import { Badge } from './Badge'
-import { css } from '@emotion/react'
 
 export default {
   title: 'Atom/Badge',

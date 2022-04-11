@@ -1,5 +1,4 @@
 import React from 'react'
-import ChatIcon from '../../assets/ChatIcon'
 import { PlainButtonProps } from '../../types'
 import * as Styled from './PlainButton.styles'
 

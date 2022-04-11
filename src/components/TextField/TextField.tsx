@@ -1,8 +1,4 @@
 import React, { useState } from 'react'
-import CheckIcon from '../../assets/CheckIcon'
-import ClearIcon from '../../assets/ClearIcon'
-import EyeoffIcon from '../../assets/EyeoffIcon'
-import SearchIcon from '../../assets/SearchIcon'
 import { EyeclosedLineIcon, EyeopenLineIcon, SearchLineIcon, XLineIcon } from '../../icons'
 import { TextFieldProps } from '../../types'
 import * as Styled from './TextField.styles'
@@ -18,12 +14,7 @@ const TextFiled: React.VFC<TextFieldProps> = ({
 }) => {
   return (
     <Styled.Label>
-      <Styled.InputContainer
-        isPositive={isPositive}
-        disabled={props.disabled}
-        isNegative={isNegative}
-        searchPrefix={Boolean(searchPrefix)}
-      >
+      <Styled.InputContainer isPositive={isPositive} disabled={props.disabled} isNegative={isNegative}>
         {searchPrefix}
         <Styled.InputWrapper>
           <Styled.Input

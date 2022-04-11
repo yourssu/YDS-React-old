@@ -1,5 +1,4 @@
 import React from 'react'
-import ChatIcon from '../../assets/ChatIcon'
 import { ListItemProps } from '../../types'
 import * as Styled from './ListItem.styles'
 
@@ -8,12 +7,7 @@ type Props = {
   rightIcon?: JSX.Element | React.ReactElement | React.ReactNode
 } & ListItemProps
 
-export const ListItem: React.VFC<Props> = ({
-  leftIcon = <ChatIcon />,
-  rightIcon = <ChatIcon />,
-  children,
-  ...props
-}) => {
+export const ListItem: React.VFC<Props> = ({ leftIcon, rightIcon, children, ...props }) => {
   return (
     <Styled.Wrapper {...props}>
       {leftIcon && <div className="leftIconContainer">{leftIcon}</div>}
