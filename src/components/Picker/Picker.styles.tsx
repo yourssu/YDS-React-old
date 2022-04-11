@@ -4,7 +4,7 @@ import { getTypoStyle, Typography } from '../../styles/foundation/typo/typo'
 export const Content = styled.div`
   display: flex;
   justify-content: center;
-  width: 375px;
+  width: 100%;
 
   .content-container {
     width: 100%;

@@ -8,7 +8,11 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof Picker>
 
-const Template: ComponentStory<typeof Picker> = (args) => <Picker {...args} />
+const Template: ComponentStory<typeof Picker> = (args) => (
+  <div style={{ width: '375px' }}>
+    <Picker {...args} />
+  </div>
+)
 
 export const Primary = Template.bind({})
 Primary.args = {
