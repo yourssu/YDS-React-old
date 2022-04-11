@@ -31,7 +31,6 @@ export const TopDim = styled.ul`
       position: absolute;
       width: 100%;
       height: 100%;
-      /* background-color: ${({ theme }) => theme.color.dimThickReserved}; */
     }
   }
 `
@@ -88,7 +87,6 @@ export const BottomDim = styled.ul`
       position: absolute;
       width: 100%;
       height: 100%;
-      /* background-color: ${({ theme }) => theme.color.dimThickReserved}; */
     }
   }
 `
