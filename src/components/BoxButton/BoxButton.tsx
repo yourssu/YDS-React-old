@@ -1,5 +1,4 @@
-import React from 'react'
-import ChatIcon from '../../assets/ChatIcon'
+import React, { forwardRef } from 'react'
 import { BoxButtonProps } from '../../types'
 import * as Styled from './BoxButton.styles'
 
@@ -11,12 +10,12 @@ export interface Props extends BoxButtonProps {
   title: string
 }
 
-export const BoxButton: React.FC<Props> = ({ leftIcon = <ChatIcon />, title, ...props }) => {
+export const BoxButton = forwardRef<HTMLButtonElement, Props>(({ leftIcon, title, ...props }, ref) => {
   return (
-    <Styled.Button disabled={props.isDisabled} {...props}>
+    <Styled.Button disabled={props.isDisabled} {...props} ref={ref}>
       <>{leftIcon}</>
-      <div className="padding--4" style={{ paddingLeft: '4px' }} />
+      <Styled.Padding padding="0 0 0 4px" />
       <>{title}</>
     </Styled.Button>
   )
-}
+})

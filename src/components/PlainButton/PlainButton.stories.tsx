@@ -1,7 +1,7 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import ChatIcon from '../../assets/ChatIcon'
 import { PlainButton } from './PlainButton'
+import { GroundLineIcon } from '../../icons'
 
 export default {
   title: 'Atom/PlainButton',
@@ -27,7 +27,7 @@ Pointed.args = {
   isPointed: true,
   disabled: false,
   isWarned: false,
-  leftIcon: <ChatIcon />,
+  leftIcon: <GroundLineIcon />,
 }
 
 export const Disabled = Template.bind({})
@@ -37,7 +37,7 @@ Disabled.args = {
   isPointed: false,
   disabled: true,
   isWarned: false,
-  leftIcon: <ChatIcon />,
+  leftIcon: <GroundLineIcon />,
 }
 
 export const Warned = Template.bind({})
@@ -47,7 +47,7 @@ Warned.args = {
   isPointed: false,
   disabled: false,
   isWarned: true,
-  leftIcon: <ChatIcon />,
+  leftIcon: <GroundLineIcon />,
 }
 
 export const Medium = Template.bind({})
@@ -57,7 +57,7 @@ Medium.args = {
   isPointed: true,
   disabled: false,
   isWarned: false,
-  leftIcon: <ChatIcon />,
+  leftIcon: <GroundLineIcon />,
 }
 
 export const Small = Template.bind({})
@@ -67,5 +67,5 @@ Small.args = {
   isPointed: true,
   disabled: false,
   isWarned: false,
-  leftIcon: <ChatIcon />,
+  leftIcon: <GroundLineIcon />,
 }

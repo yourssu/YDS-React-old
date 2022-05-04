@@ -3,6 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { List } from './List'
 import { ListItem } from '../ListItem/ListItem'
 import { ListToggleItem } from '../ListToggleItem/ListToggleItem'
+import { ArrowRightLineIcon } from '../../icons'
 
 export default {
   title: 'Component/List',
@@ -25,7 +26,7 @@ Primary.args = {
     <ListItem leftIcon={''} rightIcon={''}>
       비밀번호 변경
     </ListItem>,
-    <ListItem leftIcon={''} rightIcon={'>'}>
+    <ListItem leftIcon={''} rightIcon={ArrowRightLineIcon}>
       계정 관리
     </ListItem>,
     <ListToggleItem>비밀번호 변경</ListToggleItem>,

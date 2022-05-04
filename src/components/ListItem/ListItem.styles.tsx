@@ -10,6 +10,7 @@ export const Wrapper = styled.ul<ListItemProps>`
   background-color: ${({ isPressed, theme }) => (isPressed ? theme.color.bgPressed : 'transparent')};
   align-items: center;
   padding: 0 20px;
+  cursor: pointer;
   .leftIconContainer {
     margin: 12px 8px 12px 20px;
   }

@@ -17,7 +17,11 @@ const Template: ComponentStory<typeof SimpleTextField> = (args) => {
     setValue('')
   }
   const newArgs = { ...args, value, onChange, onClickClearButton }
-  return <SimpleTextField {...newArgs} />
+  return (
+    <div style={{ width: '350px' }}>
+      <SimpleTextField {...newArgs} />
+    </div>
+  )
 }
 
 export const Primary = Template.bind({})
