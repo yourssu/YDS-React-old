@@ -1,6 +1,4 @@
-import React, {
- forwardRef, useContext, useEffect, useState 
-} from 'react'
+import React, { forwardRef, useContext, useEffect, useState } from 'react'
 import styled from '@emotion/styled'
 import { getTypoStyle, Typography } from '../../styles/foundation/typo/typo'
 import { TabBarContext } from './TabBar'
