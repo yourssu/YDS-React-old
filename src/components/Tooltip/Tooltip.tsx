@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
-import styled from '@emotion/styled'
 import { css } from '@emotion/react'
+import styled from '@emotion/styled'
 import { getTypoStyle, Typography } from '../../styles/foundation/typo/typo'
 
 export interface TooltipProps {
@@ -53,10 +53,10 @@ const TooltipWrapper = styled.div<{ pointed: boolean }>`
   position: relative;
   background-color: ${({ pointed, theme }) => (pointed ? theme.color.tooltipPoint : theme.color.tooltipBG)};
   color: ${({ theme }) => theme.color.textReserved};
-  ${getTypoStyle(Typography.Body2)}
   padding: 12px 16px;
   border-radius: 8px;
   margin: 0 8px;
+  ${getTypoStyle(Typography.Body2)}
 `
 
 const TooltipContent = styled.div`
