@@ -50,7 +50,13 @@ const getArrowTransform = ({ arrowPosition }: TooltipProps) =>
 
 const TooltipWrapper = styled.div<{ pointed: boolean }>`
   position: relative;
-  background-color: ${({ pointed, theme }) => (pointed ? theme.color.tooltipPoint : theme.color.tooltipBG)};
+  display: inline flow-root;
+  min-width: 10px;
+  min-height: 10px;
+  background-color: ${({
+                         pointed,
+                         theme
+                       }) => (pointed ? theme.color.tooltipPoint : theme.color.tooltipBG)};
   color: ${({ theme }) => theme.color.textReserved};
   ${getTypoStyle(Typography.Body2)}
   padding: 12px 16px;
