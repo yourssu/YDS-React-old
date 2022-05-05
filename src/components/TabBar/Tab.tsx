@@ -12,15 +12,19 @@ export const TabBase = styled.button<TabProps>`
   height: 48px;
   background-color: ${({ theme }) => theme.color.bgElevated};
   ${getTypoStyle(Typography.Button2)};
-  color: ${({ selected, theme }) => (selected ? theme.color.bottomBarSelected : theme.color.bottomBarNormal)};
-  border-width: ${({ selected }) => (selected ? '0 0 2px' : '0')};
+  color: ${({
+              selected,
+              theme
+            }) => (selected ? theme.color.bottomBarSelected : theme.color.bottomBarNormal)};
+  border-width: ${({ selected }) => (selected ? "0 0 2px" : "0")};
+  padding: ${({ selected }) => (selected ? "2px 2px 0" : "9")};
   border-bottom-color: ${({ theme }) => theme.color.bottomBarSelected};
   box-sizing: border-box;
 
   &:active {
     background-color: ${({ theme }) => theme.color.buttonNormalPressed};
   }
-`
+`;
 
 export const Tab = forwardRef<HTMLButtonElement, TabProps>((props, ref) => {
   const { value, setValue } = useContext(TabBarContext) ?? {
