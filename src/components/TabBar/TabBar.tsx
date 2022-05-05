@@ -25,7 +25,7 @@ export interface TabBarState {
 
 export const TabBarContext = createContext<TabBarState | undefined>(undefined);
 
-const TabBarNavigation = styled.button<{ direction: "left" | "right" }>`
+const TabBarNavigation = styled.button<{ direction: "left" | "right"; disabled: boolean }>`
   width: 24px;
   height: 100%;
   background: ${({
@@ -109,12 +109,13 @@ export const TabBar = forwardRef<HTMLDivElement, TabBarProps>((props, ref) => {
   const onWheel = (event: React.WheelEvent<HTMLDivElement>) => {
     event.preventDefault();
     if (listRef?.current) {
+      const cWidth = listRef.current.clientWidth;
       const sWidth = listRef.current.scrollWidth;
       listRef.current.scrollLeft += event.deltaY;
-      if (sWidth >= listRef.current.scrollLeft) {
-        setIsOnEnd(true);
-        setIsOnStart(false);
-      }
+      if (isOnEnd !== listRef.current.scrollLeft >= sWidth - cWidth)
+        setIsOnEnd(listRef.current.scrollLeft >= sWidth - cWidth);
+      if (isOnStart !== listRef.current.scrollLeft <= 0)
+        setIsOnStart(listRef.current.scrollLeft <= 0);
     }
   };
 
@@ -126,8 +127,9 @@ export const TabBar = forwardRef<HTMLDivElement, TabBarProps>((props, ref) => {
       if (isPositive) {
         const newPos = pos + 88;
         if (isOnStart) setIsOnStart(false);
-        if (newPos > sWidth) {
-          setIsOnStart(true);
+        console.log(newPos, sWidth);
+        if (newPos >= sWidth - cWidth) {
+          setIsOnEnd(true);
           listRef.current.scrollLeft = sWidth - cWidth;
           return;
         }
@@ -135,7 +137,7 @@ export const TabBar = forwardRef<HTMLDivElement, TabBarProps>((props, ref) => {
       } else {
         const newPos = pos - 88;
         if (isOnEnd) setIsOnEnd(false);
-        if (newPos < 0) {
+        if (newPos <= 0) {
           setIsOnStart(true);
           listRef.current.scrollLeft = 0;
           return;
@@ -150,14 +152,14 @@ export const TabBar = forwardRef<HTMLDivElement, TabBarProps>((props, ref) => {
     })}>
       <TabBarWrapper scrollable={props.scrollable} navigation={props.navigation}
                      ref={ref}>
-        <TabBarNavigation direction="left"
+        <TabBarNavigation disabled={isOnStart} direction="left"
                           onClick={() => scrollPage(false)}>
           <ArrowLeftLineIcon />
         </TabBarNavigation>
         <TabList ref={listRef} scrollable={props.scrollable} onWheel={onWheel}>
           {props.children}
         </TabList>
-        <TabBarNavigation direction="right"
+        <TabBarNavigation disabled={isOnEnd} direction="right"
                           onClick={() => scrollPage(true)}>
           <ArrowRightLineIcon />
         </TabBarNavigation>
