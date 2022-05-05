@@ -52,7 +52,8 @@ const TabList = styled.div<{ scrollable: boolean }>`
   background-color: ${({ theme }) => theme.color.bgElevated};
   padding: 0 24px;
   display: flex;
-  overflow-x: ${({ scrollable }) => (scrollable ? 'scroll' : 'visible')};
+  overscroll-behavior-y: contain;
+  overflow-x: ${({ scrollable }) => (scrollable ? "scroll" : "visible")};
   -ms-overflow-style: none;
   scrollbar-width: none;
 
@@ -102,13 +103,18 @@ function TabBarProvider({ children, onChange }: TabBarProviderProps) {
 }
 
 export const TabBar = forwardRef<HTMLDivElement, TabBarProps>((props, ref) => {
-  const listRef = useRef<HTMLDivElement>(null)
-
+  const listRef = useRef<HTMLDivElement>(null);
+  const [isOnStart, setIsOnStart] = useState(true);
+  const [isOnEnd, setIsOnEnd] = useState(false);
   const onWheel = (event: React.WheelEvent<HTMLDivElement>) => {
     event.preventDefault();
     if (listRef?.current) {
-      event.preventDefault()
-      listRef.current.scrollLeft += event.deltaY
+      const sWidth = listRef.current.scrollWidth;
+      listRef.current.scrollLeft += event.deltaY;
+      if (sWidth >= listRef.current.scrollLeft) {
+        setIsOnEnd(true);
+        setIsOnStart(false);
+      }
     }
   };
 
@@ -118,25 +124,41 @@ export const TabBar = forwardRef<HTMLDivElement, TabBarProps>((props, ref) => {
       const cWidth = listRef.current.clientWidth;
       const sWidth = listRef.current.scrollWidth;
       if (isPositive) {
-        const newPos = pos + cWidth
-        listRef.current.scrollLeft = newPos > sWidth ? sWidth - cWidth : newPos
+        const newPos = pos + 88;
+        if (isOnStart) setIsOnStart(false);
+        if (newPos > sWidth) {
+          setIsOnStart(true);
+          listRef.current.scrollLeft = sWidth - cWidth;
+          return;
+        }
+        listRef.current.scrollLeft = newPos;
       } else {
-        const newPos = pos - cWidth
-        listRef.current.scrollLeft = newPos < 0 ? 0 : newPos
+        const newPos = pos - 88;
+        if (isOnEnd) setIsOnEnd(false);
+        if (newPos < 0) {
+          setIsOnStart(true);
+          listRef.current.scrollLeft = 0;
+          return;
+        }
+        listRef.current.scrollLeft = newPos;
       }
     }
   };
 
   return (
-    <TabBarProvider onChange={props.onChange ?? (() => {})}>
-      <TabBarWrapper scrollable={props.scrollable} navigation={props.navigation} ref={ref}>
-        <TabBarNavigation onClick={() => scrollPage(false)}>
+    <TabBarProvider onChange={props.onChange ?? (() => {
+    })}>
+      <TabBarWrapper scrollable={props.scrollable} navigation={props.navigation}
+                     ref={ref}>
+        <TabBarNavigation direction="left"
+                          onClick={() => scrollPage(false)}>
           <ArrowLeftLineIcon />
         </TabBarNavigation>
         <TabList ref={listRef} scrollable={props.scrollable} onWheel={onWheel}>
           {props.children}
         </TabList>
-        <TabBarNavigation onClick={() => scrollPage(true)}>
+        <TabBarNavigation direction="right"
+                          onClick={() => scrollPage(true)}>
           <ArrowRightLineIcon />
         </TabBarNavigation>
       </TabBarWrapper>
