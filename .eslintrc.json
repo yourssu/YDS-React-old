@@ -5,71 +5,115 @@
     "browser": true,
     "node": true
   },
-  "extends": [
-    "plugin:import/recommended",
-    "plugin:react-hooks/recommended",
-    "airbnb",
-    "prettier"
-  ],
   "parserOptions": {
+    "project": "./tsconfig.eslint.json",
     "ecmaFeatures": {
       "jsx": true
     },
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": [
-    "react-hooks",
-    "prettier"
-  ],
   "settings": {
     "react": {
       "version": "detect"
-    }
-  },
-  "rules": {
-    "no-confusing-arrow": "off",
-    "implicit-arrow-linebreak": "off",
-    "import/no-extraneous-dependencies": "off",
-    "prettier/prettier": [
-      "error"
+    },
+    "import/parsers": {
+      "@typescript-eslint/parser": [
+        ".ts",
+        ".tsx"
+      ]
+    },
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true
+      },
+      "project": "./tsconfig.eslint.json"
+    },
+    "import/core-modules": [
+      "react"
     ]
   },
-  "overrides": [
-    {
-      "files": [
-        "*.ts",
-        "*.tsx"
-      ],
-      "extends": [
-        "plugin:import/typescript",
-        "airbnb",
-        "airbnb-typescript",
-        "airbnb/hooks",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:@typescript-eslint/recommended-requiring-type-checking"
-      ],
-      "plugins": [
-        "@typescript-eslint",
-        "react-hooks",
-        "prettier"
-      ],
-      "rules": {
-        "react/prop-types": "off",
-        "no-confusing-arrow": "off",
-        "implicit-arrow-linebreak": "off",
-        "react/jsx-filename-extension": "off",
-        "import/no-extraneous-dependencies": "off",
-        "prettier/prettier": [
-          "error"
-        ],
-        "@typescript-eslint/semi": "off"
-      },
-      "parserOptions": {
-        "project": [
-          "./tsconfig.eslint.json"
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "import",
+    "prettier"
+  ],
+  "extends": [
+    "airbnb-typescript",
+    "prettier",
+    "plugin:storybook/recommended"
+  ],
+  "rules": {
+    "object-curly-spacing": [
+      "warn",
+      "always"
+    ],
+    "no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "args": "none"
+      }
+    ],
+    "@typescript-eslint/semi": [
+      "off"
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "args": "none"
+      }
+    ],
+    "@typescript-eslint/no-explicit-any": [
+      "error",
+      {
+        "ignoreRestArgs": true
+      }
+    ],
+    "max-len": [
+      "warn",
+      {
+        "code": 80,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreComments": true
+      }
+    ],
+    "no-plusplus": [
+      "error",
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ],
+    "react/jsx-key": "error",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.stories.*"
         ]
       }
-    }
-  ]
+    ],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "mjs": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "react/jsx-props-no-spreading": "off",
+    "import/prefer-default-export": "off",
+    "react/jsx-boolean-value": "off",
+    "react/prop-types": "off",
+    "react/no-unescaped-entities": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-wrap-multilines": "off",
+    "react/destructuring-assignment": "off"
+  }
 }
