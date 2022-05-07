@@ -1,5 +1,5 @@
 // dino`s code https://github.com/yourssu/YDS-Web/blob/main/src/foundation/Typography.ts
-import { css } from "@emotion/react"
+import { css } from '@emotion/react'
 
 enum FontWeight {
   Regular = 400,
@@ -108,7 +108,7 @@ export function getTypoStyle(typo: Typography = Typography.Body1) {
       return css`
         font-size: 16px;
         font-weight: ${FontWeight.Bold};
-        line-height: 1.0;
+        line-height: 1;
         letter-spacing: 0;
         font-family: 'Spoqa Han Sans Neo', 'sans-serif';
       `
@@ -117,7 +117,7 @@ export function getTypoStyle(typo: Typography = Typography.Body1) {
       return css`
         font-size: 14px;
         font-weight: ${FontWeight.Bold};
-        line-height: 1.0;
+        line-height: 1;
         letter-spacing: 0;
         font-family: 'Spoqa Han Sans Neo', 'sans-serif';
       `
@@ -126,7 +126,7 @@ export function getTypoStyle(typo: Typography = Typography.Body1) {
       return css`
         font-size: 14px;
         font-weight: ${FontWeight.Regular};
-        line-height: 1.0;
+        line-height: 1;
         letter-spacing: 0;
         font-family: 'Spoqa Han Sans Neo', 'sans-serif';
       `
@@ -135,7 +135,7 @@ export function getTypoStyle(typo: Typography = Typography.Body1) {
       return css`
         font-size: 12px;
         font-weight: ${FontWeight.Medium};
-        line-height: 1.0;
+        line-height: 1;
         letter-spacing: 0;
         font-family: 'Spoqa Han Sans Neo', 'sans-serif';
       `

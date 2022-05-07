@@ -1,7 +1,7 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { BoxButton } from './BoxButton'
-import ChatIcon from '../../assets/ChatIcon'
+import { GroundLineIcon } from '../../icons'
 
 export default {
   title: 'Atom/BoxButton',
@@ -29,7 +29,11 @@ Disabled.args = {
   rounding: '8',
   disabled: true,
   isWarned: false,
-  leftIcon: <ChatIcon />,
+  leftIcon: (
+    <div style={{ width: '24px', height: '24px' }}>
+      <GroundLineIcon />
+    </div>
+  ),
 }
 
 export const Warned = Template.bind({})
@@ -40,5 +44,9 @@ Warned.args = {
   rounding: '8',
   disabled: false,
   isWarned: true,
-  leftIcon: <ChatIcon />,
+  leftIcon: (
+    <div style={{ width: '24px', height: '24px' }}>
+      <GroundLineIcon />
+    </div>
+  ),
 }

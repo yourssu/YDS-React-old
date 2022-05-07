@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import ChatIcon from '../../assets/ChatIcon'
+import { GroundLineIcon } from '../../icons'
 import { Badge } from './Badge'
 
 export default {
@@ -16,7 +16,11 @@ Primary.args = {
   title: 'WithIcon',
   color: 'green',
   icon: true,
-  leftIcon: <ChatIcon />,
+  leftIcon: (
+    <div style={{ width: '16px', height: '16px' }}>
+      <GroundLineIcon />
+    </div>
+  ),
 }
 
 export const Text = Template.bind({})

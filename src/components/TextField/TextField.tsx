@@ -1,8 +1,5 @@
 import React, { useState } from 'react'
-import CheckIcon from '../../assets/CheckIcon'
-import ClearIcon from '../../assets/ClearIcon'
-import EyeoffIcon from '../../assets/EyeoffIcon'
-import SearchIcon from '../../assets/SearchIcon'
+import { EyeclosedLineIcon, EyeopenLineIcon, SearchLineIcon, XLineIcon } from '../../icons'
 import { TextFieldProps } from '../../types'
 import * as Styled from './TextField.styles'
 
@@ -17,15 +14,17 @@ const TextFiled: React.VFC<TextFieldProps> = ({
 }) => {
   return (
     <Styled.Label>
-      <Styled.InputContainer
-        isPositive={isPositive}
-        disabled={props.disabled}
-        isNegative={isNegative}
-        searchPrefix={Boolean(searchPrefix)}
-      >
+      <Styled.InputContainer isPositive={isPositive} disabled={props.disabled} isNegative={isNegative}>
         {searchPrefix}
-        <input disabled={props.disabled} placeholder={placeholder} {...props} />
-        {suffix}
+        <Styled.InputWrapper>
+          <Styled.Input
+            disabled={props.disabled}
+            searchPrefix={Boolean(searchPrefix)}
+            placeholder={placeholder}
+            {...props}
+          />
+          {suffix}
+        </Styled.InputWrapper>
       </Styled.InputContainer>
       {helperLabel && (
         <Styled.HelperLabel
@@ -51,7 +50,7 @@ const SimpleTextField: React.VFC<SimpleTextFieldProps> = ({ onClickClearButton, 
     <TextFiled
       suffix={
         <div className="suffix-icon clear-icon" onClick={onClickClearButton}>
-          <ClearIcon />
+          <XLineIcon />
         </div>
       }
       {...props}
@@ -78,14 +77,14 @@ const SearchTextField: React.VFC<SearchTextFieldProps> = ({ suffix, onClickClear
     <TextFiled
       suffix={
         <div className="suffix-icon" onClick={onClickClearButton}>
-          <ClearIcon />
+          <XLineIcon />
         </div>
       }
       type="email"
       helperLabel=""
       searchPrefix={
         <div className="search-icon">
-          <SearchIcon />
+          <SearchLineIcon />
         </div>
       }
       {...props}
@@ -108,12 +107,12 @@ const PasswordTextField: React.VFC<PasswordTextFieldProps> = ({ suffix, onClickC
       type={isHide ? 'password' : 'text'}
       suffix={
         <div
-          className="suffix-icon"
+          className="suffix-icon eye-icon"
           onClick={() => {
             setIsHide((prev) => !prev)
           }}
         >
-          {isHide ? <EyeoffIcon /> : <CheckIcon />}
+          {isHide ? <EyeclosedLineIcon /> : <EyeopenLineIcon />}
         </div>
       }
       helperLabel=""

@@ -7,7 +7,6 @@ export interface TooltipProps {
   arrowPosition: 'top' | 'bottom' | 'left' | 'right'
   arrowAlign: 'start' | 'center' | 'end'
   pointed: boolean
-  children: React.ReactNode
 }
 
 const getArrowSize = ({ arrowPosition }: TooltipProps) =>
@@ -71,6 +70,9 @@ const ArrowWrapper = styled.div<TooltipProps>`
   ${(props) => getArrowPosition(props)}
   ${(props) => getArrowSize(props)}
 `
+
+const arrowPath =
+  'path("M20.5858 8.51096L14.3431 2.3851C12.8429 0.912872 10.808 0.0857849 8.68629 0.0857849H35.3137C33.192 0.0857849 31.1571 0.91287 29.6569 2.38509L23.4142 8.51096C22.6332 9.27739 21.3668 9.2774 20.5858 8.51096Z")'
 
 const Arrow = styled.svg<TooltipProps>`
   position: absolute;

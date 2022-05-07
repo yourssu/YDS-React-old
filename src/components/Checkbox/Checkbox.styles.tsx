@@ -3,7 +3,46 @@ import styled from '@emotion/styled'
 import { getTypoStyle, Typography } from '../../styles/foundation/typo/typo'
 import { CheckBoxProps } from '../../types'
 
-export const Label = styled.label<CheckBoxProps>`
+const getSizeStyle = ({ size }: { size: CheckBoxProps['size'] }) => {
+  if (size === 'small') {
+    return css`
+      .checkIcon-wrapper {
+        width: 16px;
+        height: 16px;
+      }
+      .padding-box {
+        padding-right: 4px;
+      }
+      height: 16px;
+      font-size: 12px;
+    `
+  }
+
+  if (size === 'medium') {
+    return css`
+      .checkIcon-wrapper {
+        width: 20px;
+        height: 20px;
+      }
+      height: 20px;
+      font-size: 14px;
+    `
+  }
+
+  if (size === 'large') {
+    return css`
+      .checkIcon-wrapper {
+        width: 24px;
+        height: 24px;
+      }
+
+      height: 24px;
+      font-size: 14px;
+    `
+  }
+}
+
+export const CheckboxWrapper = styled.div<CheckBoxProps>`
   width: fit-content;
   position: relative;
   display: flex;
@@ -27,7 +66,7 @@ export const Label = styled.label<CheckBoxProps>`
 
   ${getTypoStyle(Typography.Button3)};
 
-  input:disabled + span {
+  input:disabled + .label {
     ${({ theme, isSelected }) =>
       isSelected
         ? css`
@@ -50,37 +89,5 @@ export const Label = styled.label<CheckBoxProps>`
           fill: ${disabled ? theme.color.buttonDisabled : theme.color.buttonNormal};
         `};
 
-  ${({ size }) =>
-    size === 'small'
-      ? css`
-          .check-icon {
-            width: 16px;
-            height: 16px;
-          }
-          .padding-box {
-            padding-right: 4px;
-          }
-          height: 16px;
-          font-size: 12px;
-        `
-      : size === 'medium'
-      ? css`
-          .check-icon {
-            width: 20px;
-            height: 20px;
-          }
-          height: 20px;
-          font-size: 14px;
-        `
-      : size === 'large'
-      ? css`
-          .check-icon {
-            width: 24px;
-            height: 24px;
-          }
-
-          height: 24px;
-          font-size: 14px;
-        `
-      : css``};
+  ${({ size }) => getSizeStyle({ size })}
 `

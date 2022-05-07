@@ -14,7 +14,11 @@ const Template: ComponentStory<typeof SuffixTextField> = (args) => {
     setValue(e.target.value)
   }
   const newArgs = { ...args, value, onChange }
-  return <SuffixTextField {...newArgs} />
+  return (
+    <div style={{ width: '350px' }}>
+      <SuffixTextField {...newArgs} />
+    </div>
+  )
 }
 
 export const Primary = Template.bind({})

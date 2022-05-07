@@ -1,6 +1,7 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { ListItem } from './ListItem'
+import { GroundLineIcon } from '../../icons'
 
 export default {
   title: 'Atom/ListItem',
@@ -20,6 +21,8 @@ export const Primary = Template.bind({})
 Primary.args = {
   isPressed: false,
   children: '로그아웃',
+  leftIcon: <GroundLineIcon />,
+  rightIcon: <GroundLineIcon />,
 }
 
 export const Pressed = Template.bind({})

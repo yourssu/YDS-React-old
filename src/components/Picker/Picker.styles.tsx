@@ -4,7 +4,7 @@ import { getTypoStyle, Typography } from '../../styles/foundation/typo/typo'
 export const Content = styled.div`
   display: flex;
   justify-content: center;
-  width: 375px;
+  width: 100%;
 
   .content-container {
     width: 100%;
@@ -31,7 +31,6 @@ export const TopDim = styled.ul`
       position: absolute;
       width: 100%;
       height: 100%;
-      /* background-color: ${({ theme }) => theme.color.dimThickReserved}; */
     }
   }
 `
@@ -88,7 +87,6 @@ export const BottomDim = styled.ul`
       position: absolute;
       width: 100%;
       height: 100%;
-      /* background-color: ${({ theme }) => theme.color.dimThickReserved}; */
     }
   }
 `

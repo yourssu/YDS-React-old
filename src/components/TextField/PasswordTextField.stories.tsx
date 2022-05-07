@@ -14,7 +14,11 @@ const Template: ComponentStory<typeof PasswordTextField> = (args) => {
     setValue(e.target.value)
   }
   const newArgs = { ...args, value, onChange }
-  return <PasswordTextField {...newArgs} />
+  return (
+    <div style={{ width: '350px' }}>
+      <PasswordTextField {...newArgs} />
+    </div>
+  )
 }
 
 export const Primary = Template.bind({})
