@@ -5,10 +5,6 @@ export type ToggleProps = {
 } & React.InputHTMLAttributes<HTMLInputElement>
 
 export type ToastMessageProps = {
-  /**  
-     multi: more than two lines (left alignment) <br>
-     single: single lines (center alignment) */
-  line: 'multi' | 'single'
 } & React.HtmlHTMLAttributes<HTMLDivElement>
 
 export type TextFieldExtends = {

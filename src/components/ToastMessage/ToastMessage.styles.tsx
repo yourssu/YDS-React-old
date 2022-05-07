@@ -13,13 +13,7 @@ export const ToastWrapper = styled.div`
     width: 100%;
     position: absolute;
     bottom: 64px;
-  }
-
-  .message-container {
-    border-radius: 8px;
-    display: flex;
-    width: 100%;
-    background-color: ${({ theme }) => theme.color.toastBG};
+    align-items: center;
   }
 
   .padding--8 {
@@ -28,11 +22,14 @@ export const ToastWrapper = styled.div`
   }
 `
 
-export const MessageWrapper = styled.div<ToastMessageProps>`
-  width: 100%;
-  margin: 16px 24px;
+export const Toast = styled.div<ToastMessageProps>`
+  border-radius: 8px;
   display: flex;
+  width: 100%;
+  background-color: ${({ theme }) => theme.color.toastBG};
+  padding: 16px 24px;
   ${getTypoStyle(Typography.Body2)};
   color: ${({ theme }) => theme.color.textReserved};
-  justify-content: ${({ line }) => (line === 'single' ? 'center' : 'flex-start')};
+  text-align: left;
+  justify-content: center;
 `
