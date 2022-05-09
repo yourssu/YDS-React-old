@@ -69,14 +69,18 @@ export type BadgeProps = {
 } & React.HtmlHTMLAttributes<HTMLDivElement>
 
 export type ListItemProps = {
+  children?: React.ReactNode | React.ReactElement | JSX.Element
   isPressed?: boolean
 } & React.HTMLAttributes<HTMLUListElement>
 
 export type ListToogleItemProps = {
   isSelected?: boolean
+  children?: React.ReactNode | React.ReactElement | JSX.Element
+  disabled?: boolean;
+  onClickToggle?: () => void;
 } & React.HTMLAttributes<HTMLUListElement>
 
 export type ListProps = {
   subHeader?: React.ReactNode
-  listItems?: ListItemProps[] | ListToogleItemProps[]
+  children?: React.ReactNode | React.ReactElement | JSX.Element
 }

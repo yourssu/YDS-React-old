@@ -4,7 +4,7 @@ import * as Styled from './ToastMessage.styles'
 import { Toast } from './ToastMessage.styles'
 
 /* children: message of ToastMessage */
-const ToastMessage: React.FC<ToastMessageProps> = ({ line, children }) => (
+const ToastMessage: React.FC<ToastMessageProps> = ({ children }) => (
   <Styled.ToastWrapper>
     <div className="toast-container">
       <div className="padding--8" />
