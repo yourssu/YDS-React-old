@@ -7,7 +7,7 @@ type Props = {
   rightIcon?: JSX.Element | React.ReactElement | React.ReactNode
 } & ListItemProps
 
-export const ListItem: React.VFC<Props> = ({ leftIcon, rightIcon, children, ...props }) => {
+export const ListItem: React.FC<Props> = ({ leftIcon, rightIcon, children, ...props }) => {
   return (
     <Styled.Wrapper {...props}>
       {leftIcon && <div className="leftIconContainer">{leftIcon}</div>}
