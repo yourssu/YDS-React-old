@@ -15,9 +15,9 @@ export const SubHeader = styled.div`
   padding: 0 20px;
   width: 100%;
   align-items: center;
-  ${getTypoStyle(Typography.Body1)};
   color: ${({ theme }) => theme.color.textSecondary};
   height: 48px;
+  ${getTypoStyle(Typography.Subtitle3)};
 `
 
 export const ListItems = styled.div`
