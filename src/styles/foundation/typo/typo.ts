@@ -25,6 +25,7 @@ export enum Typography {
   Button3 = 'button3',
   Button4 = 'button4',
 
+  Caption0 = 'caption0',
   Caption1 = 'caption1',
   Caption2 = 'caption2',
 }
@@ -52,7 +53,7 @@ export function getTypoStyle(typo: Typography = Typography.Body1) {
     case Typography.Subtitle1:
       return css`
         font-size: 20px;
-        font-weight: ${FontWeight.Bold};
+        font-weight: ${FontWeight.Medium};
         line-height: 1.3;
         letter-spacing: 0;
         font-family: 'Spoqa Han Sans Neo', 'sans-serif';
@@ -61,7 +62,7 @@ export function getTypoStyle(typo: Typography = Typography.Body1) {
     case Typography.Subtitle2:
       return css`
         font-size: 16px;
-        font-weight: ${FontWeight.Bold};
+        font-weight: ${FontWeight.Medium};
         line-height: 1.3;
         letter-spacing: 0;
         font-family: 'Spoqa Han Sans Neo', 'sans-serif';
@@ -70,7 +71,7 @@ export function getTypoStyle(typo: Typography = Typography.Body1) {
     case Typography.Subtitle3:
       return css`
         font-size: 14px;
-        font-weight: ${FontWeight.Bold};
+        font-weight: ${FontWeight.Medium};
         line-height: 1.3;
         letter-spacing: 0;
         font-family: 'Spoqa Han Sans Neo', 'sans-serif';
@@ -107,7 +108,7 @@ export function getTypoStyle(typo: Typography = Typography.Body1) {
     case Typography.Button1:
       return css`
         font-size: 16px;
-        font-weight: ${FontWeight.Bold};
+        font-weight: ${FontWeight.Medium};
         line-height: 1;
         letter-spacing: 0;
         font-family: 'Spoqa Han Sans Neo', 'sans-serif';
@@ -116,7 +117,7 @@ export function getTypoStyle(typo: Typography = Typography.Body1) {
     case Typography.Button2:
       return css`
         font-size: 14px;
-        font-weight: ${FontWeight.Bold};
+        font-weight: ${FontWeight.Medium};
         line-height: 1;
         letter-spacing: 0;
         font-family: 'Spoqa Han Sans Neo', 'sans-serif';
@@ -140,14 +141,23 @@ export function getTypoStyle(typo: Typography = Typography.Body1) {
         font-family: 'Spoqa Han Sans Neo', 'sans-serif';
       `
 
+    case Typography.Caption0:
+      return css`
+      font-size: 12px;
+      font-weight: ${FontWeight.Medium};
+      line-height: 1.3;
+      letter-spacing: 0;
+      font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+    `
+
     case Typography.Caption1:
       return css`
-        font-size: 12px;
-        font-weight: ${FontWeight.Regular};
-        line-height: 1.3;
-        letter-spacing: 0;
-        font-family: 'Spoqa Han Sans Neo', 'sans-serif';
-      `
+      font-size: 12px;
+      font-weight: ${FontWeight.Regular};
+      line-height: 1.3;
+      letter-spacing: 0;
+      font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+    `
 
     case Typography.Caption2:
       return css`
