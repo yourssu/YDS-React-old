@@ -17,7 +17,7 @@ export const TabBase = styled.button<TabProps>`
               theme
             }) => (selected ? theme.color.bottomBarSelected : theme.color.bottomBarNormal)};
   border-width: ${({ selected }) => (selected ? "0 0 2px" : "0")};
-  padding: ${({ selected }) => (selected ? "2px 2px 0" : "9")};
+  padding: ${({ selected }) => (selected ? "2px 2px 0" : "2px")};
   border-bottom-color: ${({ theme }) => theme.color.bottomBarSelected};
   box-sizing: border-box;
 
