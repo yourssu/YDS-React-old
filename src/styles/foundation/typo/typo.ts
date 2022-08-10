@@ -9,6 +9,9 @@ enum FontWeight {
 }
 
 export enum Typography {
+  Display1 = "Display1",
+  Display2 = "Display2",
+
   Title1 = 'title1',
   Title2 = 'title2',
 
@@ -32,6 +35,25 @@ export enum Typography {
 
 export function getTypoStyle(typo: Typography = Typography.Body1) {
   switch (typo) {
+
+    case Typography.Display1:
+      return css`
+        font-size: 40px;
+        font-weight: ${FontWeight.Bold};
+        line-height: 1.3;
+        letter-spacing: 0;
+        font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+      `  
+      
+    case Typography.Display2:
+      return css`
+        font-size: 32px;
+        font-weight: ${FontWeight.Bold};
+        line-height: 1.3;
+        letter-spacing: 0;
+        font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+      `
+
     case Typography.Title1:
       return css`
         font-size: 28px;
