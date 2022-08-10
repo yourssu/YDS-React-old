@@ -100,7 +100,7 @@ export function getTypoStyle(typo: Typography = Typography.Body1) {
       return css`
         font-size: 16px;
         font-weight: ${FontWeight.Medium};
-        line-height: 1.3;
+        line-height: 1.4;
         letter-spacing: 0;
         font-family: 'Spoqa Han Sans Neo', 'sans-serif';
       `
@@ -109,7 +109,7 @@ export function getTypoStyle(typo: Typography = Typography.Body1) {
       return css`
         font-size: 16px;
         font-weight: ${FontWeight.Medium};
-        line-height: 1;
+        line-height: 1.4;
         letter-spacing: 0;
         font-family: 'Spoqa Han Sans Neo', 'sans-serif';
       `
@@ -118,7 +118,7 @@ export function getTypoStyle(typo: Typography = Typography.Body1) {
       return css`
         font-size: 14px;
         font-weight: ${FontWeight.Medium};
-        line-height: 1;
+        line-height: 1.3;
         letter-spacing: 0;
         font-family: 'Spoqa Han Sans Neo', 'sans-serif';
       `
@@ -127,7 +127,7 @@ export function getTypoStyle(typo: Typography = Typography.Body1) {
       return css`
         font-size: 14px;
         font-weight: ${FontWeight.Regular};
-        line-height: 1;
+        line-height: 1.3;
         letter-spacing: 0;
         font-family: 'Spoqa Han Sans Neo', 'sans-serif';
       `
@@ -136,7 +136,7 @@ export function getTypoStyle(typo: Typography = Typography.Body1) {
       return css`
         font-size: 12px;
         font-weight: ${FontWeight.Medium};
-        line-height: 1;
+        line-height: 1.4;
         letter-spacing: 0;
         font-family: 'Spoqa Han Sans Neo', 'sans-serif';
       `
