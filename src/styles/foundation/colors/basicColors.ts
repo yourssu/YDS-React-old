@@ -1,5 +1,59 @@
 import * as type from './colors-type'
-const basicColors: { [color in type.BasicColorsType]: string } = {
+
+export const darkBasicColors = {
+  logoIndigo: "#4E5986",
+  logoViolet: '#8969AC',
+  logoYellow: "#FDD655",
+
+  pointColor050: "#27233E",
+  pointColor100: "#433A74",
+  pointColor200: "#544895",
+  pointColor300: "#6556B5",
+  pointColor400: "#816DEC",
+  pointColor500: "#9380E8",
+  pointColor600: "#A797F0",
+  pointColor700: "#B2A4EF",
+  pointColor800: "#CBC1F6",
+  pointColor900: "#EBE6FB",
+
+  warningRed050: '#401E1F',
+  warningRed100: '#5F2627',
+  warningRed200: '#5F2627',
+  warningRed300: '#A93B3B',
+  warningRed400: '#C74445',
+  warningRed500: '#FF5E5E',
+  warningRed600: '#F37476',
+  warningRed700: '#F99C9D',
+  warningRed800: '#FFCED4',
+  warningRed900: '#FFECEF',
+
+  gray050: '#1A1B1C',
+  gray100: '#1D1E1F',
+  gray200: '#120212',
+  gray300: '#2A2B2C',
+  gray400: '#373839',
+  gray500: '#5D5E5F',
+  gray600: '#848586',
+  gray700: '#BEBFC0',
+  gray800: '#E1E2E3',
+  gray900: '#F8F9FA',
+
+  white000: '#ffffff',
+  black000: '#101112',
+  realBlack: '#000000',
+
+  white000A05: "#ffffff0d",
+  white000A10: '#ffffff1a',
+  white000A30: '#ffffff4d',
+  white000A70: '#ffffffb3',
+
+  black000A05: '#1011120d',
+  black000A10: '#1011121a',
+  black900A30: '#1011124d',
+  black900A70: '#101112b3',
+}
+
+export const lightBasicColors: { [color in type.BasicColorsType]: string } = {
   logoBlue: '#1653DB',
   logoYellow: '#FFC441',
   pointColor050: '#EBE5FB',
@@ -186,5 +240,3 @@ const basicColors: { [color in type.BasicColorsType]: string } = {
   gray900A30: '#2527294d',
   gray900A70: '#252729b3',
 }
-
-export default basicColors
