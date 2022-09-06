@@ -13,11 +13,12 @@ export const parameters = {
 }
 
 /** 임시 */
-const isDarkMode = false
-
-addDecorator((story) => (
-  <YDSProvider theme={isDarkMode ? DarkTheme : LightTheme}>
-    <Global styles={GlobalStyles} />
-    {story()}
-  </YDSProvider>
-))
+addDecorator((story) => {
+  const isDarkMode = !window.matchMedia('(prefers-color-scheme: dark)').matches
+  return (
+    <YDSProvider theme={isDarkMode ? DarkTheme : LightTheme}>
+      <Global styles={GlobalStyles} />
+      {story()}
+    </YDSProvider>
+  )
+})

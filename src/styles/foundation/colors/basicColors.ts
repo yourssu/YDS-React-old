@@ -51,7 +51,7 @@ export const darkBasicColors = {
   black000A10: '#1011121a',
   black900A30: '#1011124d',
   black900A70: '#101112b3',
-}
+} as const
 
 export const lightBasicColors: { [color in type.BasicColorsType]: string } = {
   logoBlue: '#1653DB',
