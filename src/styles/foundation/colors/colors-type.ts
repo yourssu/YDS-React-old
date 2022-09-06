@@ -42,19 +42,19 @@ type VariusColorsType =
   | `${VariusColors}700`
   | `${VariusColors}800`
 
-type SystemColorsType =
-  | SystemColors
-"logoBlue" |
-"logoYellow" |
-"white000" |
-"black000" |
-"realBlack" |
-"white000A10" |
-"white000A30" |
-"white000A70" |
-"black000A10" |
-"gray900A30" |
-"gray900A70";
+type SystemColorsType = 
+| "logoBlue"  
+| SystemColors 
+| "logoYellow" 
+|"white000" 
+|"black000" 
+|"realBlack" 
+|"white000A10" 
+|"white000A30" 
+|"white000A70" 
+|"black000A10" 
+|"gray900A30" 
+|"gray900A70";
 
 export type BasicColorsType = SystemColorsType | VariusColorsType
 
@@ -78,7 +78,7 @@ type PalettesText =
   "textDisabled" |
   "textReserved" |
   "textPointed" |
-  | "textWarned"
+  "textWarned"
 
 type PalettesDim = "dimNormal" | "dimThick" | "dimThickReserved"
 
@@ -88,7 +88,7 @@ type PalettesBorder = "borderThin" |
 
 type PalettesButton =
   | "buttonNormal"
-  | "buttonNormalPressed"
+  | "buttonNormalPressed" |
 "buttonBG" |
 "buttonEmojiBG" |
 "buttonReserved" |
